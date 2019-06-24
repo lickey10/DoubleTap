@@ -1,0 +1,150 @@
+fileFormatVersion: 2
+guid: 605b63a023ab8f24db84b1c0771d28a7
+timeCreated: 1445839050
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Camera01
+    100002: Camera01.target
+    100004: //RootNode
+    100006: Desk01
+    100008: Drawer01
+    100010: Drawer02
+    100012: Drawer03
+    100014: Drawer04
+    100016: Drawer05
+    100018: Drawer06
+    100020: Drawer07
+    100022: Handle01
+    100024: Handle02
+    100026: Handle03
+    100028: Handle04
+    100030: Handle05
+    100032: Handle06
+    100034: Handle07
+    100036: mr Area Sp.target
+    100038: Omni01
+    100040: Plane01
+    400000: Camera01
+    400002: Camera01.target
+    400004: //RootNode
+    400006: Desk01
+    400008: Drawer01
+    400010: Drawer02
+    400012: Drawer03
+    400014: Drawer04
+    400016: Drawer05
+    400018: Drawer06
+    400020: Drawer07
+    400022: Handle01
+    400024: Handle02
+    400026: Handle03
+    400028: Handle04
+    400030: Handle05
+    400032: Handle06
+    400034: Handle07
+    400036: mr Area Sp.target
+    400038: Omni01
+    400040: Plane01
+    2300000: Desk01
+    2300002: Drawer01
+    2300004: Drawer02
+    2300006: Drawer03
+    2300008: Drawer04
+    2300010: Drawer05
+    2300012: Drawer06
+    2300014: Drawer07
+    2300016: Handle01
+    2300018: Handle02
+    2300020: Handle03
+    2300022: Handle04
+    2300024: Handle05
+    2300026: Handle06
+    2300028: Handle07
+    2300030: Plane01
+    3300000: Desk01
+    3300002: Drawer01
+    3300004: Drawer02
+    3300006: Drawer03
+    3300008: Drawer04
+    3300010: Drawer05
+    3300012: Drawer06
+    3300014: Drawer07
+    3300016: Handle01
+    3300018: Handle02
+    3300020: Handle03
+    3300022: Handle04
+    3300024: Handle05
+    3300026: Handle06
+    3300028: Handle07
+    3300030: Plane01
+    4300000: Desk01
+    4300002: Drawer05
+    4300004: Handle04
+    4300006: Drawer01
+    4300008: Plane01
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

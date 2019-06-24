@@ -1,0 +1,107 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\margb630\margt990\vieww12500\viewh13340\viewkind1
+\deftab720
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\ri0
+
+\f0\fs24 \cf0 A few things need to be kept in mind while applying this MenuPackage\
+\
+1. First of all go to the BuildSettings of your project and arrange the scenes in following order:\
+	\
+  a) Splash\
+  b) MenuScene\
+  c) loadingScene\
+  c) Your Scene (as many as you want)\
+  d) PlayAgain\
+  e) levelSelect(if you are going for different levels in your game)\
+\
+2. Apply "
+\b loadSettings.js
+\b0 " and "
+\b pauseGame.js
+\b0 " scripts to an empty GameObject in your scene(s). To make it more convenient, i have made a prefab by the name of Settings, so you can just drag it in your scene and ready to go.\
+\
+3. Provide 
+\b OrangeGUISkin
+\b0  to the 
+\b GUISkin
+\b0  field of every script (if they are empty) in the inspector view.\
+\
+4. Provide the name of the scene you want to load in the field "
+\b sceneToLoad
+\b0 " in the inspector view to PlayAgain script (in the PlayAgain Scene)\
+\
+5. It has now included 2 new levels viz., 
+\b loading
+\b0  and 
+\b levelSelect. 
+\b0  You can drag them in your build settings according to your need.\
+\
+6. For the 
+\b levelSelect
+\b0  scene, name your levels in numbers i.e., 1,2,3,\'85 so on. It will automatically load scenes accordingly. Ofcourse you can always modify the script as per your need.\
+\
+7. For the 
+\b loadingScene
+\b0  just drag it before any level which you want to load and want to show the loading screen just before it gets loaded. It will automatically load that scene\
+\
+8. 
+\b pauseGame
+\b0  script has been simplified down into functions to support the functionality with EZGUI. Now you can drag the script onto a gameObject and then assign this object to the EZGUI control and name the method you want to call.\
+\
+For example, if you have a pause button in your scene made with EZGUI and a gameObject viz. Script, then drag the pauseGame script onto the 
+\b Script
+\b0  
+\b Object
+\b0  and assign this gameObject to the ScriptWithMethodToInvoke and the method name as 
+\b pause
+\b0 . Now when you hit the button it shall call the pause method and your game will be paused.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\ri0
+
+\b \cf0 \ul \ulc0 Note
+\b0 \ulnone : loadSettings script has to be placed in your each and every scene. Just drag Settings object in your scene and remove pauseGame script from that object.\
+\
+I would love to hear from you here:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\ri0
+{\field{\*\fldinst{HYPERLINK "http://forum.unity3d.com/threads/66506-How-to-pause-your-game-in-unity"}}{\fldrslt \cf2 \ul \ulc2 MenuPackage}}\
+\
+\
+For past few months, I have been working on some useful utilities like the editor utilities and other stuffs like that. I have introduced an editor utility which can be used to deploy component on multiple gameObjects at the same time.\
+\
+\
+In this version I have introduced a simpler way to implement theme level box you might have seen in various games. Like you have a set of several levels and you want to put each one of them inside a main level box like Angry Birds has.\
+\
+Now I have tried to make it more easier and customizable by exposing some useful properties like scale down, movement, speed, etc.\
+\
+\
+The properties needed for the main box are:\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\ri0
+
+\b \cf0 Speed- 
+\b0 Used to control how fast your box switches from one to another.\
+
+\b Gap- 
+\b0 the gap is actually nothing but the space in world units between one box and the other.\
+\
+
+\b ZValue of Box- 
+\b0 How far you want to keep this box from your camera.\
+
+\b YValue of Box- 
+\b0 On which height you want to keep your camera.\
+\
+
+\b Level Boxes- 
+\b0 How many level boxes you have in your game.\
+\
+For more detailed description, please watch this video:\
+\
+\
+\
+Thanks\
+Ravinder Saxena
+\f1\fs22 \
+}

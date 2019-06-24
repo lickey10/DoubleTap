@@ -1,0 +1,2798 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html -->
+<html class=" js no-flexbox flexbox-legacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en" xmlns="http://www.w3.org/1999/xhtml"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+
+    <!-- Use the .htaccess and remove these lines to avoid edge case issues. More info: h5bp.com/i/378 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Using drawing package like System.Drawing - Unity Answers</title>
+    <meta name="description" content="Unity is the ultimate game development platform. Use Unity to build high-quality 3D and 2D games, deploy them across mobile, desktop, VR/AR, consoles or the Web, and connect with loyal and enthusiastic players and customers.">
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="canonical" href="./Using drawing package like System.Drawing - Unity Answers_files/Using drawing package like System.Drawing - Unity Answers.html">
+
+        
+                <meta name="google-site-verification" content="AGGknmqixVRSGO2oawYFtVcUjaEpzFSp66ObG_tZGMY">
+<script async="" src="./Using drawing package like System.Drawing - Unity Answers_files/async-ads.js"></script><script async="" src="./Using drawing package like System.Drawing - Unity Answers_files/async-ads.js"></script><script type="text/javascript" async="" src="./Using drawing package like System.Drawing - Unity Answers_files/ga.js"></script><script type="text/javascript" async="" src="./Using drawing package like System.Drawing - Unity Answers_files/cse.js"></script><script type="text/javascript" async="" src="./Using drawing package like System.Drawing - Unity Answers_files/cse.js"></script><script type="text/javascript" async="" src="./Using drawing package like System.Drawing - Unity Answers_files/cp.js"></script><script type="text/javascript">
+(function(){
+  var ua = document.createElement('script'); ua.type = 'text/javascript'; ua.async = true;
+  ua.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'unity3d.com/ads/cp.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ua, s);
+})();
+</script>
+
+        
+
+
+<script type="text/javascript">
+    var askFormURL = '/questions/ask.html';
+    var logoutURL = '/users/logout.html';
+    var voteUpJsonURL = '/commands/0/voteup.json';
+    var voteDownJsonURL = '/commands/0/votedown.json';
+    var getVotesJsonUrl = '/%7Bnode%7D/getVotes.json';
+    var related_questions_url = '/search.json';
+    var emailCheckerURL = '/users/temporaryLogin/dupsUserEmailCheck.json';
+
+    var authorizedFileTypes = 'gif,png,jpg,jpeg,zip,tar.gz,pdf,txt'.split(",");
+    var authorizedImageTypes = 'gif,png,jpg,jpeg'.split(",");
+
+    var flashMessages = [];
+
+    var pageContext = {
+        currentUser: {
+            id: '',
+            username: 'Anonymous',
+            url: '#',
+            avatar: '',
+            reputation: '',
+            follows: null,
+            canCreateTopics: false
+        },
+        attachments: {
+            maxSizeBytes: 524288,
+            maxSizeBytesTotal: 1048576
+        },
+        i18n: {
+            confirm: "Are you sure?",
+            yes: "Yes",
+            no: "No",
+            save: "Save",
+            cancel: "Cancel",
+            close: "Close",
+            edit: "Edit",
+            insert: "Insert",
+            upload: "Upload",
+            download: "Download",
+            choose: "Choose",
+            deleted: "Deleted",
+            ok: "Ok",
+            by: "by",
+            word: "word",
+            words: "words",
+            character: "character",
+            characters: "characters",
+            login: "Sign in",
+            register: "Register",
+            timeAgo: "{0} ago",
+            timeAt: "at",
+            day: "day",
+            days: "days",
+            hour: "hour",
+            hours: "hours",
+            minute: "minute",
+            minutes: "minutes",
+            second: "sec",
+            seconds: "secs",
+            justNow: "just now",
+            retag: "retag",
+            comment: "Comment",
+            comments: "Comments",
+            showOneComment: "<i class='icon-comments'></i> Show 1",
+            hideOneComment: "<i class='icon-comments'></i> Hide 1",
+            showNComments: "<i class='icon-comments'></i> Show $n",
+            hideNComments: "<i class='icon-comments'></i> Hide $n",
+            question: "question",
+            questions: "Questions",
+            answer: "Answer",
+            answers: "Answers",
+            posts: "Posts",
+            wiki: "Wiki",
+            reputation: "Reputation",
+            unlike: "<i class=' icon-chevron-up'></i>",
+            like: "<i class=' icon-chevron-up'></i>",
+            likes: "Likes",
+            follow: "Follow",
+            unfollow: "Unfollow",
+            following: "Following",
+            followers: "Followers",
+            awarded: "Awarded",
+            completedBy: "Recently completed by",
+            joined: "Joined",
+            authorizedTypes: "Allowed Upload Types",
+            uploadDialog: {
+                uploadFile: "Choose a file to upload",
+                doUpload: "Upload",
+                fileTooBig: "Your attachment must be $size or smaller.",
+                invalidAttachmentType: "Your attachment must be one of: gif,png,jpg,jpeg,zip,tar.gz,pdf,txt",
+                invalidImageType: "Your image must be one of: gif,png,jpg,jpeg"
+            },
+            previewAndCropDialog: {
+                previewAndResize: "Preview and resize",
+                accept: "Accept"
+            },
+
+            closeQuestionTitle: "Close or Flag",
+            lockPostModalTitle: "Lock",
+            reportQuestionModalTitle: "Report",
+            confirmModalTitle: "Please confirm",
+            convertToAnswerText: "Are you sure you want to convert this comment to answer?",
+            unlockPostModalText: "Are you sure you want to allow comments on this post?",
+            cancelReportModalText: "Are you sure you want to undo reporting this post?",
+
+            reportSuccessText: "This post has been successfully reported.",
+            reportCancelText: "Your report on this post has been sucessfully canceled.",
+
+            commandsMoveToSpace: "Move",
+            commandsGiveReputation: "Reward user",
+            commandsGiveReputationSuccess: "Points awarded successfully",
+            commandsConvertToCommentTitle: "Select comment location",
+            uploadProfilePictureSelectButton: "Select photo from your computer",
+            changeAvatarSelectButton: "Select photo from your computer",
+            changeAvatarSelectNoPhoto: "No photo selected",
+            postControlsRedirectTitle: "Redirect",
+
+            WMDImageDialogText: "Enter image url",
+            WMDLinkDialogText: "Enter url",
+            WMDUploadImage: "upload image",
+            WMDBold: "Strong <strong> Ctrl+B",
+            WMDItalic: "Emphasis <em> Ctrl+I",
+            WMDLink: "Hyperlink <a> Ctrl+L",
+            WMDQuote: "Blockquote <blockquote> Ctrl+Q",
+            WMDCode: "Code Sample <pre><code> Ctrl+K",
+            WMDImage: "Image <img> Ctrl+G",
+            WMDAttachment: "Attachment Ctrl+U",
+            WMDOrderedList: "Numbered List <ol> Ctrl+O",
+            WMDUnorderedList: "Bulleted List <ul> Ctrl+U",
+            WMDHeading: "Heading <h1>/<h2> Ctrl+H",
+            WMDHorizontalRule: "Horizontal Rule <hr> Ctrl+R",
+            WMDUndo: "Undo - Ctrl+Z",
+            WMDRedoWin: "Redo - Ctrl+Y",
+            WMDRedoOther: "Redo - Ctrl+Shift+Z",
+            WMDHelp: "Markdown Help",
+
+            draftMessage: "We noticed that you were previously working on TYPO. What would you like to do now?",
+            draftSaveMessage: "Saving Draft...",
+            draftLoadButton: "Load Draft",
+            draftDeleteButton: "Delete Draft",
+
+            linkMenuInsertLink: "Insert link",
+            linkMenuEditLink: "Edit link",
+            linkMenuUnlink: "Remove link",
+            linkMenuAnchor: "Anchor",
+            linkMenuMailto: "Email",
+            inputTextPrompt: "Text",
+            inputWebPrompt: "URL",
+            inputLinkNewTab: "Open link in a new tab",
+            inputImageForm: "Update Image",
+            inputImageTitle: "Title",
+            inputImagePosition: "Position",
+            inputImagePositionNone: "None",
+            inputImagePositionLeft: "Left",
+            inputImagePositionRight: "Right",
+
+            formattingLabel: "Formatting",
+            formattingParagraph: "Normal Text",
+            formattingQuote: "Quote",
+            formattingCode: "Code",
+            formattingHeader: "Header",
+            formattingBold: "Bold",
+            formattingItalic: "Italic",
+            formattingUnderline: "Underline",
+            formattingFontColor: "Font Color",
+            formattingBackColor: "Back Color",
+            formattingIndent: "Indent",
+            formattingOutdent: "Outdent",
+            formattingAlignment: "Alignment",
+            formattingAlignLeft: "Align text to the left",
+            formattingAlignCenter: "Center text",
+            formattingAlignRight: "Align text to the right",
+            formattingAlignJustify: "Justify text",
+            formattingHorizontalRule: "Insert Horizontal Rule",
+
+            toolTipsInsertImage: "Insert Image",
+            toolTipsInsertFile: "Insert File",
+            toolTipsInsertCode: "Insert Code",
+            toolTipsInsertVideo: "Insert Video",
+            toolTipsInsertTable: "Insert Table",
+            toolTipsorderedList: "Ordered List",
+            toolTipsunorderedList: "Unordered List",
+            toolTipLink: "Link",
+
+            tableInsert: "Insert Table",
+            tableRows: "Rows",
+            tableColumns: "Columns",
+            tableInsertRowAbove: "Add Row Above",
+            tableInsertRowBelow: "Add Row Below",
+            tableInsertColumnLeft: "Add Column Left",
+            tableInsertColumnRight: "Add Column Right",
+            tableDelete: "Delete Table",
+            tableDeleteColumn: "Delete Column",
+            tableDeleteRow: "Delete Row",
+            tableAddHead: "Add Header",
+            tableDeleteHead: "Delete Header",
+
+            uploadOrChoose: "Or Choose",
+            uploadDropFileHere: "Drop file here",
+            uploadFilenameOptional: "Name (optional)",
+
+            emailValidationPrompt: "Resend validation email",
+            emailValidationPromptBody: "Do you want to resend email validation?",
+            invalidReputation: "Error: You must enter a valid Integer without commas."
+        },
+        url: {
+            login: "/users/login.html",
+            register: "/users/register.html",
+            getRevision: "/revisions/get-revision.json",
+            getComments: "/comments/%25ID%25/list.json",
+            uploadFile: "/uploadFile.html",
+            uploadProgress: "/uploadProgress.json",
+            uploadPreview: "/uploadPreview.html",
+            cropUpload: "/cropUpload.json",
+            cancelUpload: "/cancelUpload.json",
+            markdownHelp: "/static/markdown/help.html",
+            updateMarkdown: "/commands/updateMarkdown.json",
+            profile: "/users/{id}/{plug}.html",
+            extractKeywords: "/extract-keywords.json",
+            follow: "/follow/%7BobjId%7D/%7Btype%7D.json",
+            unfollow: "/unfollow/%7BobjId%7D/%7Btype%7D.json",
+            getUserFollows: "/%7Buser%7D/getUserFollows.json",
+            condensedProfileUrl: "/users/%7Buser%7D/condensedProfile.json",
+            viewTopicJSON: "/topics/%7Btopic%7D/view.json",
+            topicIcon: "/topics/%7Btopic%7D/icon.html",
+            topic: "/topics/%7Btopic%7D.html",
+            topicSearch: "/search/topics.json",
+            awardListUrl: "/badge/%7BawardType%7D/%7Bdesc%7D.json",
+            usersSearch: "/users/list.json",
+            usersLookup: "/users/lookup.json",
+            mentionsSearch: "/users/mentionsSearch.json",
+            searchJson: "/search.json",
+            trackJs: "/static/trackJs.json",
+            userAvatar: "/users/%7BuserId%7D/photo/view.html",
+            revisionView: "/revisions/{nodeId}.html"
+        },
+        extraScripts: {
+            jcrop: {
+                js: '/themes/thub/scripts/jcrop/js/jquery.Jcrop.js',
+                css: '/themes/thub/scripts/jcrop/css/jquery.Jcrop.css'
+            }
+        },
+        options: {
+        	maxTopics: '5'
+        },
+        additional: {"TH_CSRF":"5304542541472557696"},
+        useRelativeTime: true,
+        userRealName: false
+    };
+    pageContext.i18n["delete"] = "Delete";
+</script>
+
+        <!--[if lte IE 10]>
+    <script src="/themes/base/scripts/compatibility/indexOf.js" type="text/javascript"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="/themes/base/scripts/compatibility/document.getSelection.js" type="text/javascript"></script>
+    <script src="/themes/base/scripts/compatibility/ierange-m2-packed.js" type="text/javascript"></script>
+    <style type="text/css">
+        input[type="password"] {
+            font-family: Arial;
+        }
+    </style>
+    <![endif]-->
+
+<script type="text/javascript" src="./Using drawing package like System.Drawing - Unity Answers_files/combined.js.h1495578045.pack" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+(function ($) {
+    "use strict";
+
+    $.extend($.fn.select2.defaults, {
+        formatNoMatches: function () {
+            return 'No matches found';
+        },
+        formatInputTooShort: function (input, min) {
+            var n = min - input.length;
+            if (n == 1) {
+                return 'Please enter 1 more character.';
+            }
+            else {
+                var return_str = "Please enter $n more characters.";
+                return return_str.replace("$n", n.toString());
+            }
+        },
+        formatInputTooLong: function (input, max) {
+            var n = input.length - max;
+            if (n == 1)
+                return 'Please delete 1 character.';
+            else {
+                var return_str = 'Please delete $n characters.';
+                return return_str.replace("$n", n.toString());
+            }
+        },
+        formatSelectionTooBig: function (limit) {
+            if (limit == 1)
+                return 'You can only select 1 item.';
+            else {
+                var return_str = 'You can only select $n items.';
+                return return_str.replace("$n", limit.toString());
+            }
+        },
+        formatLoadMore: function (pageNumber) {
+            return 'Loading more results...';
+        },
+        formatSearching: function () {
+            return 'Searching...';
+        }
+    });
+})(jQuery);
+</script>
+    
+    <script type="text/javascript" src="./Using drawing package like System.Drawing - Unity Answers_files/modernizr.min.js"></script>
+    <script src="./Using drawing package like System.Drawing - Unity Answers_files/unity.js" type="text/javascript"></script>    
+
+    <script src="./Using drawing package like System.Drawing - Unity Answers_files/jquery.tmpl.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="http://answers.unity3d.com/themes/thub/images/favicon.ico">
+
+    <!-- Core Bootstrap css + Kickstrap styles -->
+<link rel="stylesheet" type="text/css" href="./Using drawing package like System.Drawing - Unity Answers_files/combined.css.h1838984638.pack" charset="utf-8"><link rel="stylesheet" type="text/css" href="./Using drawing package like System.Drawing - Unity Answers_files/combined.css.h875472960.pack" charset="utf-8">
+	<link rel="stylesheet" href="./Using drawing package like System.Drawing - Unity Answers_files/unity.css">
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var $style;
+            $style = $('<style type="text/css">:before,:after{content:none !important}</style>');
+            $('head').append($style);
+            return setTimeout((function() {
+                return $style.remove();
+            }), 0);
+        });
+    </script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        $(document).ready(function(){pageContext.options.commentsAttachmentsEnabled = true});
+        $(document).ready(function(){
+                commands["convertToComment"].onSuccess = function(data) {
+	                setTimeout(function(){
+        	    		commandUtils.reloadPage(); //wait 1 second before reloading
+        		}, 1000);
+                };
+        });
+    </script>
+
+
+    
+
+    
+
+    <script type="text/javascript">
+        $(function () {
+pageContext.i18n.modTalk = 'moderation talk';
+pageContext.i18n.replyToComment = 'Reply';
+pageContext.i18n.modTalkEmpty = 'moderation talk is empty';
+pageContext.url.getModTalk = "/comments/%25ID%25/listModTalk.json";
+pageContext.url.possibleCommentRecipients = "/comments/%ID%/possibleRecipients.json";
+pageContext.url.commentEdit = '/comments/%25ID%25/edit.html';
+
+pageContext.i18n.commentVisibility = {
+'full': 'Viewable by all users',
+'op': 'Viewable by the original poster',
+'mod': 'Viewable by moderators',
+'opAndMod': 'Viewable by moderators and the original poster',
+'other': 'Advanced visibility',
+'dialogTitle': 'Comment visibility',
+'selectGroups': 'Visible to groups',
+'selectOther': 'Other recipients',
+'selectOriginalPoster': 'Original poster',
+'selectModerators': 'Moderators',
+'selectAssignees': 'Asked to answer users'
+};
+
+pageContext.i18n.commentMenuLabels = {
+'comment-edit': 'comments.menu.edit',
+'comment-delete': 'comments.menu.delete',
+'comment-convert': 'comments.menu.convert'
+};pageContext.i18n.answer= {
+	bestAnswer: 'Best Answer',
+	controlBar : {
+		accept: 'Accept',
+		unaccept: 'Unaccept',
+		acceptCommand: 'Accept this answer as correct',
+		cancelAcceptedCommand: 'Remove this answers accepted status'
+	}
+};
+    window.croles = {
+        u: false, op: false, m: false,
+        og: false, as: false, ag: false,
+        dc: false, doc: false, eo: false, ea: false
+    };
+
+    tools.init({
+        q: {
+            e: false, ew: false, eo: false,
+            r: false, ro: false,
+            d: false, dow: false, fv: false,
+            c: false, co: false,
+            p: false, tm: false
+            , ms: false, mos: false
+        },
+        n: {
+            f: false, vf: false, vfo: false,
+            vr: false, vro: false,
+            c: false, co: false,
+            vu: false, vd: false,
+            w: false, wo: false,
+            l: false
+        },
+        c: {
+            e: false, eo: false,
+            d: false, dow: false,
+            ta: false, tao: false,
+            l: false
+        },
+        a: {
+            e: false, ew: false, eo: false,
+            d: false, dow: false,
+            a: false, aoq: false, ao: false,
+            tc: false, tco: false,
+            p: false, tm: false
+        },
+        pc: croles
+    }, {
+        tc: true,
+        nsc: false
+    });
+
+            commandUtils.initializeLabels();
+        });
+    </script>
+
+<script src="./Using drawing package like System.Drawing - Unity Answers_files/jsapi" type="text/javascript"></script><script src="./Using drawing package like System.Drawing - Unity Answers_files/jsapi" type="text/javascript"></script><link type="text/css" href="./Using drawing package like System.Drawing - Unity Answers_files/default+en.css" rel="stylesheet"><link type="text/css" href="./Using drawing package like System.Drawing - Unity Answers_files/default.css" rel="stylesheet"><script type="text/javascript" src="./Using drawing package like System.Drawing - Unity Answers_files/default+en.I.js"></script><link type="text/css" href="./Using drawing package like System.Drawing - Unity Answers_files/default+en.css" rel="stylesheet"><link type="text/css" href="./Using drawing package like System.Drawing - Unity Answers_files/default.css" rel="stylesheet"><script type="text/javascript" src="./Using drawing package like System.Drawing - Unity Answers_files/default+en.I.js"></script><style type="text/css">
+.gsc-control-cse {
+font-family: Arial, sans-serif;
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-control-cse .gsc-table-result {
+font-family: Arial, sans-serif;
+}
+input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+border-color: #D9D9D9;
+}
+input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
+border-color: #2F5BB7;
+background-color: #357AE8;
+background-image: none;
+filter: none;
+}
+.gsc-tabHeader.gsc-tabhInactive {
+border-color: #CCCCCC;
+background-color: #FFFFFF;
+}
+.gsc-tabHeader.gsc-tabhActive {
+border-color: #CCCCCC;
+border-bottom-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-tabsArea {
+border-color: #CCCCCC;
+}
+.gsc-webResult.gsc-result,
+.gsc-results .gsc-imageResult {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result:hover,
+.gsc-imageResult:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b,
+.gs-imageResult a.gs-title:link,
+.gs-imageResult a.gs-title:link b {
+color: #5284BD;
+}
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b,
+.gs-imageResult a.gs-title:visited,
+.gs-imageResult a.gs-title:visited b {
+color: #5284BD;
+}
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b,
+.gs-imageResult a.gs-title:hover,
+.gs-imageResult a.gs-title:hover b {
+color: #5284BD;
+}
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b,
+.gs-imageResult a.gs-title:active,
+.gs-imageResult a.gs-title:active b {
+color: #5284BD;
+}
+.gsc-cursor-page {
+color: #5284BD;
+}
+a.gsc-trailing-more-results:link {
+color: #5284BD;
+}
+.gs-webResult .gs-snippet,
+.gs-imageResult .gs-snippet,
+.gs-fileFormatType {
+color: #333333;
+}
+.gs-webResult div.gs-visibleUrl,
+.gs-imageResult div.gs-visibleUrl {
+color: #009933;
+}
+.gs-webResult div.gs-visibleUrl-short {
+color: #009933;
+}
+.gs-webResult div.gs-visibleUrl-short {
+display: none;
+}
+.gs-webResult div.gs-visibleUrl-long {
+display: block;
+}
+.gs-promotion div.gs-visibleUrl-short {
+display: none;
+}
+.gs-promotion div.gs-visibleUrl-long {
+display: block;
+}
+.gsc-cursor-box {
+border-color: #FFFFFF;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+border-color: #CCCCCC;
+background-color: #FFFFFF;
+color: #5284BD;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+border-color: #CCCCCC;
+background-color: #FFFFFF;
+color: #5284BD;
+}
+.gsc-webResult.gsc-result.gsc-promotion {
+border-color: #F6F6F6;
+background-color: #F6F6F6;
+}
+.gsc-completion-title {
+color: #5284BD;
+}
+.gsc-completion-snippet {
+color: #333333;
+}
+.gs-promotion a.gs-title:link,
+.gs-promotion a.gs-title:link *,
+.gs-promotion .gs-snippet a:link {
+color: #1155CC;
+}
+.gs-promotion a.gs-title:visited,
+.gs-promotion a.gs-title:visited *,
+.gs-promotion .gs-snippet a:visited {
+color: #1155CC;
+}
+.gs-promotion a.gs-title:hover,
+.gs-promotion a.gs-title:hover *,
+.gs-promotion .gs-snippet a:hover {
+color: #1155CC;
+}
+.gs-promotion a.gs-title:active,
+.gs-promotion a.gs-title:active *,
+.gs-promotion .gs-snippet a:active {
+color: #1155CC;
+}
+.gs-promotion .gs-snippet,
+.gs-promotion .gs-title .gs-promotion-title-right,
+.gs-promotion .gs-title .gs-promotion-title-right * {
+color: #333333;
+}
+.gs-promotion .gs-visibleUrl,
+.gs-promotion .gs-visibleUrl-short {
+color: #009933;
+}
+.gsc-input input.gsc-input {
+background: none repeat scroll 0% 0% white !important;
+}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gscsep_a{display:none}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 9px}.gsib_a{padding-right:8px;padding-left:8px}.gsst_a{padding-top:3px}.gssb_e{border:0}.gssb_l{margin:5px 0}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gscsep_a{display:none}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 9px}.gsib_a{padding-right:8px;padding-left:8px}.gsst_a{padding-top:3px}.gssb_e{border:0}.gssb_l{margin:5px 0}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+
+<body>
+<div id="not-footer">
+
+<header id="section-header" class="section section-header mb40">
+	<div class="header-wrapper">
+		<div class="top-fill">
+			<div class="wrap">
+				<div class="fill"></div>
+			</div>
+		</div>
+		<nav class="top-nav">
+			<div class="wrap">
+				<div class="shard"></div>
+				<div class="logo"><a href="http://unity3d.com/"></a></div>
+				<ul>
+					<li><a href="http://unity3d.com/unity">Unity</a></li>
+					<li><a href="http://unity3d.com/services">Services</a></li>
+					<li><a href="http://unity3d.com/showcase">Showcase</a></li>
+					<li><a href="http://unity3d.com/learn">Learn</a></li>
+					<li><a href="http://unity3d.com/community" class="active-trail">Community</a></li>
+					<li class="m-right last"><a href="http://unity3d.com/asset-store">Asset Store</a></li>
+					<li class="m-right"><a href="http://unity3d.com/get-unity" title="">Get Unity</a></li>
+				</ul>
+				<div class="user-icon"></div>
+				<div class="search-icon"></div>
+				<div class="search-wrapper">
+					<script>(function(){ var cx = '002645370080425984202:i_d7wpkpdzy'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script>
+					<div class="search-box"><div id="___gcse_0"><div class="gsc-control-searchbox-only gsc-control-searchbox-only-en" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 " style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" style="display: none;"><span class="gscb_a" id="gs_cb50">×</span></a></div></td></tr></tbody></table></div><input type="hidden" name="bgresponse" id="bgresponse"></td><td class="gsc-search-button"><input type="image" src="./Using drawing package like System.Drawing - Unity Answers_files/search_box_icon.png" class="gsc-search-button gsc-search-button-v2" title="search"></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table><table cellspacing="0" cellpadding="0" class="gsc-branding"><tbody><tr style="display: none;"><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img src="./Using drawing package like System.Drawing - Unity Answers_files/small-logo.png" class="gsc-branding-img"></td></tr></tbody></table></form></div></div></div>
+				</div>
+				<div class="user-wrapper">
+			    
+			    <div class="content clear">
+			    
+			    
+			    
+			    	
+			    		<h2>UNITY ACCOUNT</h2>
+			    		<small class="bb mb15">You need a Unity Account to shop in the Online and Asset Stores, participate in the Unity Community and manage your license portfolio.</small>
+			    		
+			    				
+			    		<a class="blue-btn sbtn mr10" id="login" href="http://answers.unity3d.com/users/login.html">Login</a>
+			    			
+			    			
+			    	    <a href="http://answers.unity3d.com/users/register.html" class="gray-btn sbtn">Create account</a>
+			    	
+			    
+				</div>
+			</div>
+		</div></nav>
+		<nav class="sub-nav">
+			<div class="wrap">
+				<div class="sub-fill"></div>
+				<ul class="secondary-menu">
+				  <li class="menu-383 first"><a href="http://forum.unity3d.com/" title="">Forums</a></li>
+				  <li class="menu-384"><a class="active-trail" href="http://answers.unity3d.com/" title="">Answers</a></li>
+				  <li class="menu-385"><a href="http://feedback.unity3d.com/" title="">Feedback</a></li>
+				  <li class="menu-767"><a href="http://issuetracker.unity3d.com/" title="">Issue Tracker</a></li>
+				  <li class="menu-933"><a href="http://blogs.unity3d.com/" title="">Blog</a></li>
+				  <li class="menu-764"><a href="http://evangelists.unity3d.com/" title="">Evangelists</a></li>
+				  <li class="menu-860 last"><a href="http://unity3d.com/community/user-groups" title="">User Groups</a></li>
+				</ul>
+				<script> var submore = 'More'; </script>
+			</div>
+		</nav>
+	</div>
+</header>
+<nav class="mobile-menu">
+	<div class="wrap">
+		<div class="mobile-search">
+			<script>(function(){ var cx = '002645370080425984202:i_d7wpkpdzy'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script>
+			<div class="search-box"><div id="___gcse_1"><div class="gsc-control-searchbox-only gsc-control-searchbox-only-en" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id2"><table cellspacing="0" cellpadding="0" id="gs_id51" class="gstl_51 " style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti51" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" id="gsc-i-id2" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st51" dir="ltr"><a class="gsst_a" href="javascript:void(0)" style="display: none;"><span class="gscb_a" id="gs_cb51">×</span></a></div></td></tr></tbody></table></div><input type="hidden" name="bgresponse" id="bgresponse"></td><td class="gsc-search-button"><input type="image" src="./Using drawing package like System.Drawing - Unity Answers_files/search_box_icon.png" class="gsc-search-button gsc-search-button-v2" title="search"></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table><table cellspacing="0" cellpadding="0" class="gsc-branding"><tbody><tr style="display: none;"><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img src="./Using drawing package like System.Drawing - Unity Answers_files/small-logo.png" class="gsc-branding-img"></td></tr></tbody></table></form></div></div></div>
+		</div>
+		<div class="menu">
+			<h2>Navigation</h2>
+			<ul>
+				<li><a href="http://unity3d.com/">Home</a></li>
+				<li><a href="http://unity3d.com/unity">Unity</a></li>
+				<li><a href="http://unity3d.com/industries">Industries</a></li>
+				<li><a href="http://unity3d.com/showcase">Showcase</a></li>
+				<li><a href="http://unity3d.com/learn">Learn</a></li>
+				<li><a href="http://unity3d.com/community" class="active-trail">Community</a>
+				  <ul class="secondary-menu">
+				    <li class="menu-383 first"><a href="http://forum.unity3d.com/" title="">Forums</a></li>
+				    <li class="menu-384"><a class="active-trail" href="http://answers.unity3d.com/" title="">Answers</a></li>
+				    <li class="menu-385"><a href="http://feedback.unity3d.com/" title="">Feedback</a></li>
+				    <li class="menu-767"><a href="http://issuetracker.unity3d.com/" title="">Issue Tracker</a></li>
+				    <li class="menu-933"><a href="http://blogs.unity3d.com/" title="">Blog</a></li>
+				    <li class="menu-764"><a href="http://evangelists.unity3d.com/" title="">Evangelists</a></li>
+				    <li class="menu-860 last"><a href="http://unity3d.com/community/user-groups" title="">User Groups</a></li>
+				  </ul>
+				</li>
+				<li><a href="http://unity3d.com/get-unity" title="">Get Unity</a></li>
+				<li><a href="https://www.assetstore.unity3d.com/">Asset Store</a></li>
+			</ul>
+		</div>
+		
+		<div class="user">
+	    
+	    <div class="content clear">
+	    
+	    
+	    
+	    	
+	    		<h2>Unity account</h2>
+	    		<small class="mb15 cl">You need a Unity Account to shop in the Online and Asset Stores, participate in the Unity Community and manage your license portfolio.</small>
+	    		
+	    				
+	    		<a id="login" href="http://answers.unity3d.com/users/login.html" class="blue-btn sbtn mr10">Login</a>
+	    			
+	    			
+	    	    <a href="http://answers.unity3d.com/users/register.html" class="gray-btn sbtn">Create account</a>
+	    	
+	    </div>
+		</div>
+		<div class="lang clear">
+			<h2>Language</h2>
+			<div class="language-switcher">
+				<ul id="mobile-lang" class="languages">
+					<li><a href="http://china.unity3d.com/" data-lang="cn"><span class="translation_missing" title="translation missing: en.layouts.language_selector.lang.chinese">Chinese</span></a></li>
+					<li><a href="http://spanish.unity3d.com/" data-lang="es"><span class="translation_missing" title="translation missing: en.layouts.language_selector.lang.spanish">Spanish</span></a></li>
+					<li><a href="http://japan.unity3d.com/" data-lang="jp"><span class="translation_missing" title="translation missing: en.layouts.language_selector.lang.japanese">Japanese</span></a></li>
+					<li><a href="http://www.unity3dkorea.com/" data-lang="kr"><span class="translation_missing" title="translation missing: en.layouts.language_selector.lang.korean">Korean</span></a></li>
+					<li><a href="http://portuguese.unity3d.com/" data-lang="pt"><span class="translation_missing" title="translation missing: en.layouts.language_selector.lang.portuguese">Portuguese</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>    
+<section id="section-content" class="section section-content">
+	<header class="m-header clear">
+		<div class="m-logo"><a href="http://answers.unity3d.com/unity5/"></a></div>
+		<div class="m-navbtn rel"><div class="lines"></div></div>
+		<div class="m-searchbtn"></div>
+		<div class="m-userbtn"></div>
+	</header>
+
+
+        <div>
+                
+
+        </div>
+
+
+<div id="main-navbar" class="navbar navbar-fixed-top">
+    
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="search-wrapper span8">
+                    <a type="button" class="btn btn-navbar off-canvas-nav-btn" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#sidr">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </a>
+                    <form action="http://answers.unity3d.com/search.html" method="get" class="navbar-search">
+                        <input type="hidden" id="search-filters" name="f" value="">
+                        <input type="hidden" id="search-types" name="type" value="question">
+                        <input type="hidden" id="search-redirect" name="redirect" value="search/search">
+                        <input type="hidden" id="search-sort" name="sort" value="relevance">
+                        <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input type="text" class="search-query ui-autocomplete-input" value="" name="q" id="search-query" data-provide="typeahead" data-items="4" autocomplete="off" placeholder="Find posts and topics...">
+                        <i class="icon-search"></i>
+
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+//                                var ie7 = $.browser.msie && $.browser.version <= 7;
+
+                                var label = $('.navbar-search label[for=search_box]')
+                                label.css({
+                                    position: 'absolute',
+                                    top: 4,
+                                    left: 17,
+                                    zindex: 10
+                                });
+                                $('#search_box')
+                                        .focus(function () {
+                                            label.hide()
+                                        })
+                                        .blur(function () {
+                                            this.value == "" ? label.show() : label.hide()
+                                        })
+                            });
+                        </script>
+                        <div id="searchResultsAutoComplete"><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul></div>
+                    </form>
+                </div>
+
+                <ul class="nav-links span4">
+                    <li>
+                            <div class="btn-group navbar-action">
+
+                                <a id="create-button" class="btn btn-success" href="http://answers.unity3d.com/questions/ask.html?space=8">Ask a question</a>
+                            </div>
+                    </li>
+                        <li class="dropdown">
+                            <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" id="spaces-menu-dropdown" class="dropdown-toggle" data-toggle="dropdown">
+Spaces                                <i class="icon-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                    <li class="active">
+                                        <a class="main-nav" href="http://answers.unity3d.com/spaces/8/index.html">Default</a>
+                                    </li><li>
+                                        <a class="main-nav" href="http://answers.unity3d.com/spaces/9/index.html">Help Room</a>
+                                    </li><li>
+                                        <a class="main-nav" href="http://answers.unity3d.com/spaces/12/index.html">META</a>
+                                    </li><li>
+                                        <a class="main-nav" href="http://answers.unity3d.com/spaces/11/index.html">Moderators</a>
+                            </li></ul>
+                        </li>
+                    <li class="dropdown">
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" id="explore-menu-dropdown" class="dropdown-toggle" title="Explore" data-toggle="dropdown">
+                            <i class="icon-sitemap"></i>
+                            <i class="icon-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="http://answers.unity3d.com/topics.html">Topics</a>
+                            </li>
+
+                                <li>
+                                    <a href="http://answers.unity3d.com/questions/index.html">Questions</a>
+                                </li>
+
+                            <li>
+                                <a href="http://answers.unity3d.com/users/index.html">Users</a>
+                            </li>
+
+                            <li>
+                                <a href="http://answers.unity3d.com/badge/types.html">Badges</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a href="http://answers.unity3d.com/">Home</a> <span class="divider">/</span>
+            </li>
+        </ul>
+</div>
+
+
+    <section id="middle">
+
+        <div class="main">
+
+            <div class="main-inner">
+
+                <div class="container">
+                    <div class="row">
+                                <div class="span8 mainContent">
+
+                                        
+
+
+
+
+<script>
+
+    var jsonTopicSearch = '/search/topics.json';
+
+    var retagUrl = '/commands/53170/editQuestionTopics.json';
+
+
+    function submit_retag() {
+        $.post(retagUrl, $("#topics_retag_container").serializeArray(), function (data) {
+            document.location.reload();
+        });
+    }
+    function setup_retag() {
+        $("#topics_retag_container").css("display", "inline");
+//        $("#topics_retag_container").show();
+
+        $("#id_tags_container").hide();
+        $("#topics_retag").select2({
+            placeholder: 'Enter topics...',
+            minimumInputLength: 1,
+            width: "250px",
+            ajax: {
+                url: jsonTopicSearch,
+                dataType: 'json',
+                data: function (term, page) {
+                    return {
+                        q: term
+                    };
+                },
+                results: function (data, page) {
+                    for (var i = 0; i < data.topics.length; i++) {
+                        data.topics[i].text = data.topics[i].name;
+                        data.topics[i].id = data.topics[i].name;
+                    }
+                    return {results: data.topics};
+                }
+            },
+            tokenSeparators: [","],
+            tags: true,
+            createSearchChoice: function (term) {
+                return {id: term, text: term};
+            },
+            formatResult: function (item, container, query, escapeMarkup){
+                return escapeMarkup(item.text);
+            },
+            formatSelection: function(item,container, escapeMarkup) {
+                return escapeMarkup(item.text);
+            },
+            initSelection: function (element, callback) {
+                var data = [];
+                $(element.val().split(",")).each(function () {
+                    data.push({id: this, text: this});
+                });
+                callback(data);
+            }
+        });
+
+
+    }
+    $(document).ready(function () {
+        $("#id_do_retag").click(function () {
+            setup_retag();
+            return false;
+        });
+
+        $("#topics_retag_cancel").click(function () {
+
+            $("#topics_retag_container").hide();
+            $("#id_tags_container").show();
+        });
+    });
+</script>
+
+<div class="widget widget-nopad smallmargin" xmlns="http://www.w3.org/1999/html">
+    <div class="widget-content">
+
+
+        <div id="question-container-53170" class="post-container question-container" nodeid="53170">
+            <div id="question-53170" class="question post">
+
+<style type="text/css">
+    .question-body, .node-body {
+        min-height: 50px;
+    }
+
+    .answer-body, .reply-body {
+        min-height: 115px;
+    }
+</style>
+
+
+<div class="post-gravatar question-gravatar" nodeid="53170">
+<a href="http://answers.unity3d.com/users/9003/dani.html" style="display: inline-block; max-width: 48px;" rel="user" nodeid="9003" data-hasqtip="0"> <img class="gravatar " width="48" src="./Using drawing package like System.Drawing - Unity Answers_files/99774dbe628e77169ebdb59ad0e5b958" id="" alt="avatar image" title="Dani">
+</a>    <div class="vote-widget">
+        <a id="vote-up-button-53170" class="vote-up votes" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" command="voteUp" title="Click to up vote"><i class="icon-chevron-up icon-2x"></i></a>
+        <span id="post-53170-score-wrapper" class="post-score-wrapper count votes positive" style="cursor:default">
+            <span id="post-53170-score" class="score positive">9</span>
+        </span>
+        <a id="vote-down-button-53170" class="vote-down votes" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" command="voteDown" title="Click to down vote"><i class="icon-chevron-down icon-2x"></i></a>
+            <a id="favorite-mark-53170" class="ajax-command action-favorite ajax-command favorite-mark " href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" command="markFavorite" title="Mark this question as favorite">
+                <i class="icon-star-empty"></i>
+            </a>
+    </div>
+</div>
+            <div class="muted author-info">
+            <strong>Question</strong> by <a href="http://answers.unity3d.com/users/9003/dani.html" rel="user" nodeid="9003" data-hasqtip="1">Dani</a>                
+ ·
+            Mar 19, 2011 at 11:54 AM ·
+                <span class="tags" id="id_tags_container">
+<a href="http://answers.unity3d.com/topics/drawing.html" class="tag" rel="topic" nodeid="329" data-hasqtip="56">drawing</a>                </span>
+            </div>
+                <h1 class="question-title">Using drawing package like System.Drawing</h1>
+
+                <div class="question-body">
+                <p></p>
+<p>I need to dynamically(in script) draw on texture.<br> I know I can use Texture2D.SetPixel, but I need shapes(which I can implement by my own) and text(which is much more complex).<br> I know I can do something like a camera drawing to texture and use GUI to draw on it, but GUI is rather lacking most of the drawing feature in package like System.Drawing.<br> What I thought of doing is writing to System.Drawing.Bitmap using System.Drawing.Graphics, save the Bitmap to memory stream and then using Texture2D.LoadImage to load the image. But then I noticed System.Drawing is disabled in Unity.<br> I found a similar problem in forums regarding this, but the answer was that its not compatible with OpenGL/DirectX.<br> What I need to do is not drawing to screen, I need to draw to memory stream which is fully compatible with both OpenGL and DirectX (I was using this in an DirectX project I'm trying to convert to Unity now).<br> What can I do?</p> 
+<p></p>
+                </div>
+
+            <div class="comment-tools hidden"><span class="add-comment-link "><a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#">Comment</a></span></div>
+<div class="control-bar" nodeid="53170">
+    <div class="post-controls" nodeid="53170">
+            <a id="reply-link-53170" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#">Add comment</a>
+
+            <script type="text/javascript">
+                $(function() {
+                    $('#reply-link-53170').click(function() {
+                        commandUtils.showMessage('', "We're sorry, but you do not have enough permissions to post a comment.</br>If you believe this to be in error, contact your system administrator.");
+                        return false;
+                    });
+                });
+            </script>
+        ·
+        <a id="53170-show-comments-container" class="show-comments-container" commentcount="5"><i class="icon-comments"></i> Hide 5</a>
+
+    </div>
+</div>
+<div id="comment-53170-form-container" class="clearfix well comment-form-container">
+    <form id="comment-53170-form" action="http://answers.unity3d.com/comments/53170/add.json" method="POST" accept-charset="utf-8"><input type="hidden" name="TH_CSRF" value="5304542541472557696">
+        <div class="comment-form-widgets-container">
+        
+            <div class="comment-form-textarea-container">
+                <div class="wmd-button-bar"><ul class="wmd-button-row"><li class="wmd-button wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="background-position: 0px 0px;"></li><li class="wmd-button wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="background-position: -20px 0px;"></li><li class="wmd-spacer wmd-spacer1"></li><li class="wmd-button wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="background-position: -40px 0px;"></li><li class="wmd-button wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="background-position: -60px 0px;"></li><li class="wmd-button wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="background-position: -80px 0px;"></li><li class="wmd-button wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="background-position: -120px 0px;"></li><li class="wmd-button wmd-attachment-button" title="Attachment Ctrl+U" style="background-position: -100px 0px;"></li><li class="wmd-spacer wmd-spacer2"></li><li class="wmd-button wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="background-position: -140px 0px;"></li><li class="wmd-button wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="background-position: -160px 0px;"></li><li class="wmd-button wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="background-position: -180px 0px;"></li><li class="wmd-button wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="background-position: -200px 0px;"></li><li class="wmd-spacer wmd-spacer3"></li><li class="wmd-button wmd-undo-button" title="Undo - Ctrl+Z" style="background-position: -220px -20px;"></li><li class="wmd-button wmd-redo-button" title="Redo - Ctrl+Y" style="background-position: -240px -20px;"></li><li class="wmd-button wmd-help-button" style="background-position: -260px 0px;"><a href="http://answers.unity3d.com/static/markdown/help.html" target="_blank" title="Markdown Help"></a></li></ul></div><textarea name="body" class="commentBox redactor" data-type="comment"></textarea><div class="comments-form-attachments"><div></div><div></div></div>
+            </div>
+            <div class="comment-form-buttons">
+                <span id="comment-{{ post.id }}-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count warn">10
+                        |3000</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg">characters left</span>
+                    <span class="comments-chars-exceeded-msg">characters exceeded</span>
+                </span>
+
+                <div class="comment-form-buttons-container">
+                    <input type="submit" class="btn btn-primary comment-submit" value="Submit">
+                    <input type="submit" class="btn comment-cancel" value="Cancel">
+                </div>
+                
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <input type="hidden" name="parent" value="53170">
+        <input type="hidden" name="visibility" value="full">
+
+        <div style="display: none" class="comment-form-extra-inputs"></div>
+    </form>
+</div>
+                <div class="comments-container" id="comments-container-53170" nodeid="53170" style="display: block;">
+        <span name="106109"></span>
+        <div class="comment nsc " id="comment-106109" activerev="98586" nodeid="106109" authorid="8151">
+            <div class="comment-content" nodeid="106109">
+                <div class="comment-header" nodeid="106109">
+<a href="http://answers.unity3d.com/users/8151/daniele-1.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="8151" data-hasqtip="2"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/abf7b4a0795169d2a4f65d0f9529adbc" id="" alt="avatar image" title="Izitmee">
+</a><a href="http://answers.unity3d.com/users/8151/daniele-1.html" class="comment-user userinfo" rel="user" nodeid="8151" data-hasqtip="3">Izitmee </a>                    
+                    <span class="comment-age friendly-date" title="2011, Mar 19 at 16:30:22+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/106109/view.html">Mar 19, 2011 at 04:30 PM</a>
+                    </span>
+                    <span id="post-106109-score" class="comment-score">1</span>
+                    <div class="comment-info" id="comment-106109-info">
+
+                        <a id="vote-up-button-106109" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-106109" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-106109-left" class="comment-left">
+                    <div id="post-106109-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>I'm very curious about this. Hope someone will give you more details.</p>
+</div>
+
+            </div>
+        </div>
+        <span name="229217"></span>
+        <div class="comment nsc " id="comment-229217" activerev="352671" nodeid="229217" authorid="23448">
+            <div class="comment-content" nodeid="229217">
+                <div class="comment-header" nodeid="229217">
+<a href="http://answers.unity3d.com/users/23448/dannytequila.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="23448" data-hasqtip="4"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/8b04eb00f5ff6c54a8f3911b8ecefc81" id="" alt="avatar image" title="danny.tequila">
+</a><a href="http://answers.unity3d.com/users/23448/dannytequila.html" class="comment-user userinfo" rel="user" nodeid="23448" data-hasqtip="5">danny.tequila </a>                    
+                    <span class="comment-age friendly-date" title="2012, Mar 19 at 15:16:04+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/229217/view.html">Mar 19, 2012 at 03:16 PM</a>
+                    </span>
+                    <span id="post-229217-score" class="comment-score">1</span>
+                    <div class="comment-info" id="comment-229217-info">
+
+                        <a id="vote-up-button-229217" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-229217" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-229217-left" class="comment-left">
+                    <div id="post-229217-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>I need an answer to this one too! I want to draw a line from a 3d point up to a circle with some floating text, then drop that bitmap on the gui layer.</p></div>
+
+            </div>
+        </div>
+        <span name="253756"></span>
+        <div class="comment nsc " id="comment-253756" activerev="384228" nodeid="253756" authorid="26401">
+            <div class="comment-content" nodeid="253756">
+                <div class="comment-header" nodeid="253756">
+<a href="http://answers.unity3d.com/users/26401/ikas.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="26401" data-hasqtip="6"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/6f6bc3a55038cd37eaf134346927019a" id="" alt="avatar image" title="ikas">
+</a><a href="http://answers.unity3d.com/users/26401/ikas.html" class="comment-user userinfo" rel="user" nodeid="26401" data-hasqtip="7">ikas </a>                    
+                    <span class="comment-age friendly-date" title="2012, May 17 at 09:00:32+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/253756/view.html">May 17, 2012 at 09:00 AM</a>
+                    </span>
+                    <span id="post-253756-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-253756-info">
+
+                        <a id="vote-up-button-253756" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-253756" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-253756-left" class="comment-left">
+                    <div id="post-253756-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>really baffling as to Unity doesn't support such a mechanism. Would love to get some workarounds for this.</p></div>
+
+            </div>
+        </div>
+        <span name="254025"></span>
+        <div class="comment nsc " id="comment-254025" activerev="384591" nodeid="254025" authorid="26600">
+            <div class="comment-content" nodeid="254025">
+                <div class="comment-header" nodeid="254025">
+<a href="http://answers.unity3d.com/users/26600/darkcloud14.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="26600" data-hasqtip="8"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/4a7c031c9fff41828c08d692b1b2304a" id="" alt="avatar image" title="DarkCloud14">
+</a><a href="http://answers.unity3d.com/users/26600/darkcloud14.html" class="comment-user userinfo" rel="user" nodeid="26600" data-hasqtip="9">DarkCloud14 </a>                    
+                    <span class="comment-age friendly-date" title="2012, May 17 at 21:41:50+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/254025/view.html">May 17, 2012 at 09:41 PM</a>
+                    </span>
+                    <span id="post-254025-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-254025-info">
+
+                        <a id="vote-up-button-254025" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-254025" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-254025-left" class="comment-left">
+                    <div id="post-254025-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p><a rel="user" href="http://answers.unity3d.com/users/26401/ikas.html" nodeid="26401" data-hasqtip="10">@ikas</a> it could be, that it's not officially supported as System.Drawing has methods to draw things on screen using GDI but GDI is not compatible with OpenGL or DirectX as far as I know. Unity uses those to draw stuff and has it's own methods for those things. It is also possible, that System.Drawing is not supported from mono for the mobile platforms but I'm not sure about that. Did you read my answer on how to use System.Drawing anyway at least some of it's functionality like loading pictures with the Bitmap class and then convert it to Texture2D to draw it on screen with Unity.. I think some other functions should also work but don't ask me what else...</p></div>
+
+            </div>
+        </div>
+        <span name="703716"></span>
+        <div class="comment nsc " id="comment-703716" activerev="979423" nodeid="703716" authorid="326940">
+            <div class="comment-content" nodeid="703716">
+                <div class="comment-header" nodeid="703716">
+<a href="http://answers.unity3d.com/users/326940/madhh.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="326940" data-hasqtip="11"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/596da76728c386209ebfd7c9ffb00a46" id="" alt="avatar image" title="madhh">
+</a><a href="http://answers.unity3d.com/users/326940/madhh.html" class="comment-user userinfo" rel="user" nodeid="326940" data-hasqtip="12">madhh </a>                    
+                    <span class="comment-age friendly-date" title="2014, May 08 at 16:40:13+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/703716/view.html">May 08, 2014 at 04:40 PM</a>
+                    </span>
+                    <span id="post-703716-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-703716-info">
+
+                        <a id="vote-up-button-703716" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-703716" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-703716-left" class="comment-left">
+                    <div id="post-703716-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>My only question would be, how come it draws one line just like I want it to, and at next line it uses the first coordinate as a middle point, and the second coordinate as a "width". Any ideas? So I wanted to draw a triangle, and this is what I get: <img src="./Using drawing package like System.Drawing - Unity Answers_files/26354-drawing.jpg" alt="alt text"></p></div>
+
+            </div>
+        </div>
+                </div>
+                <script type="text/javascript">$(function () {
+                    setupComments($('#question-container-53170'), true, false, croles, "full", true)
+                });</script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $question = $("#question-container-53170");
+        var $replyLink = $question.find(".reply-link");
+        $replyLink.click(function (e) {
+            e.preventDefault();
+            $question.find(".add-comment-link").click();
+        });
+
+        $(".ajax-command").click(function () {
+            $('.dropdown-toggle').dropdown('toggle');
+        });
+    })
+</script>
+
+<div class="widget widget-nopad answer-list">
+    <div class="widget-header">
+        <h3><strong>3</strong> Replies</h3> · <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#answer-form">Add your reply</a>
+        <ul class="nav nav-pills sort">
+            <li class="sort-label">Sort:&nbsp;</li>
+            <li title="Votes" class="active"><a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html?sort=votes"><i class="icon-thumbs-up"></i></a></li>
+            <li title="Created"><a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html?sort=newest"><i class="icon-time"></i></a></li>
+            <li title="Oldest"><a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html?sort=oldest"><i class="icon-history"></i></a></li>
+        </ul>
+    </div>
+
+<div class="widget-content">
+                <div id="answer-container-253571" class="post-container answer-container clearfix  accepted-answer" "="" nodeid="253571">
+            <div id="answer-253571" class="answer clearfix post">
+
+
+<div class="post-gravatar answer-gravatar" nodeid="253571">
+<a href="http://answers.unity3d.com/users/26600/darkcloud14.html" style="display: inline-block; max-width: 48px;" rel="user" nodeid="26600" data-hasqtip="13"> <img class="gravatar " width="48" src="./Using drawing package like System.Drawing - Unity Answers_files/4a7c031c9fff41828c08d692b1b2304a(1)" id="" alt="avatar image" title="DarkCloud14">
+</a>    <div class="vote-widget">
+        <a id="vote-up-button-253571" class="vote-up votes" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" command="voteUp" title="Click to up vote"><i class="icon-chevron-up icon-2x"></i></a>
+        <span id="post-253571-score-wrapper" class="post-score-wrapper count votes positive" style="cursor:default">
+            <span id="post-253571-score" class="score positive">7</span>
+        </span>
+        <a id="vote-down-button-253571" class="vote-down votes" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" command="voteDown" title="Click to down vote"><i class="icon-chevron-down icon-2x"></i></a>
+    </div>
+</div>                <div class="labels">
+                    <span class="label label-success">Best Answer</span>
+                    
+                </div>
+                <p class="muted author-info">
+                    <strong>Answer</strong> by <a href="http://answers.unity3d.com/users/26600/darkcloud14.html" rel="user" nodeid="26600" data-hasqtip="14">DarkCloud14</a>                    
+ <span class="post-info muted">·
+May 16, 2012 at 10:55 PM                    </span></p>
+
+                <div class="answer-body">
+                <p>Hi there,</p> 
+<p>not sure if still someone wants to know how to use System.Drawing even if it's not officially supported by Unity. Ok here is what I've found out for Unity 3.5.1f2 so far:</p> 
+<ol> 
+ <li><p> If you wanna use it and don't want to get Errors in Unity Editor (not MonoDevelop) you must drag the file System.Drawing.dll into your Project tree. On default Windows Installation the file can be found in the following directory: <code>%Unity Folder%\Editor\Data\Mono\lib\mono\2.0</code> on OSX it should be in the Unity.app in somewhere. You may also be able to use the current <code>System.Drawing.dll</code> of Mono 2.10.8 but I didn't test this yet. </p> </li> 
+ <li><p> The Api Compatibility Level must be set to .NET 2.0!! The option ".NET 2.0 Subset" doesn't work. </p> </li> 
+ <li><p> For a Windows only version you would be done now and it should work. I didn't test the whole functionality of System.Drawing!! I just tested some of the Bitmap functionality. </p> </li> 
+ <li><p> Additional step for MacOSX: After you've build the Application you should open the .app/Contents directory. Create a Plugins directory there and the copy the file libgdiplus.dylib from the lib directory of Mono 2.10.8 for OSX (On windows you can use 7-zip and some other tools to get the libgdiplus.dylib from the OSX download image)! After another test the version of Unity at least the one shipped with Windows Unity doesn't work. Now rename the file libgdiplus.dylib to gdiplus.dll.bundle. After that it should also work under OSX.</p> </li> 
+</ol> 
+<p>As I'm new to Unity I'm not sure if it's possible to do the last step over the editor too so it'll do that step automatically.</p> 
+<p>Under OSX I used XCodes Instruments to find out where Unity application tries to load the gdiplus.dll from and has choosen a path that is inside the applications directory (Plugins). Don't ask me why it tries just to load a file or normally a bundle with the name gdiplus.dll.bundle instead of libgdiplus.dylib like it does in other directories.</p> 
+<p>Ok that's it so far hope this will help someone somehow. As I said I didn't use the full functionality of System.Drawing.dll nor did I test if really every class / function works.</p>
+                </div>
+
+                <div class="comment-tools hidden"><span class="add-comment-link "><a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#">Comment</a></span></div>
+<div class="control-bar" nodeid="253571">
+    <div class="post-controls" nodeid="253571">
+            <a id="reply-link-253571" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#">Add comment</a>
+
+            <script type="text/javascript">
+                $(function() {
+                    $('#reply-link-253571').click(function() {
+                        commandUtils.showMessage('', "We're sorry, but you do not have enough permissions to post a comment.</br>If you believe this to be in error, contact your system administrator.");
+                        return false;
+                    });
+                });
+            </script>
+        ·
+        <a id="253571-show-comments-container" class="show-comments-container" commentcount="5"><i class="icon-comments"></i> Hide 5</a>
+    ·
+        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+    </div>
+</div>
+<div id="comment-253571-form-container" class="clearfix well comment-form-container">
+    <form id="comment-253571-form" action="http://answers.unity3d.com/comments/253571/add.json" method="POST" accept-charset="utf-8"><input type="hidden" name="TH_CSRF" value="5304542541472557696">
+        <div class="comment-form-widgets-container">
+        
+            <div class="comment-form-textarea-container">
+                <div class="wmd-button-bar"><ul class="wmd-button-row"><li class="wmd-button wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="background-position: 0px 0px;"></li><li class="wmd-button wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="background-position: -20px 0px;"></li><li class="wmd-spacer wmd-spacer1"></li><li class="wmd-button wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="background-position: -40px 0px;"></li><li class="wmd-button wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="background-position: -60px 0px;"></li><li class="wmd-button wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="background-position: -80px 0px;"></li><li class="wmd-button wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="background-position: -120px 0px;"></li><li class="wmd-button wmd-attachment-button" title="Attachment Ctrl+U" style="background-position: -100px 0px;"></li><li class="wmd-spacer wmd-spacer2"></li><li class="wmd-button wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="background-position: -140px 0px;"></li><li class="wmd-button wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="background-position: -160px 0px;"></li><li class="wmd-button wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="background-position: -180px 0px;"></li><li class="wmd-button wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="background-position: -200px 0px;"></li><li class="wmd-spacer wmd-spacer3"></li><li class="wmd-button wmd-undo-button" title="Undo - Ctrl+Z" style="background-position: -220px -20px;"></li><li class="wmd-button wmd-redo-button" title="Redo - Ctrl+Y" style="background-position: -240px -20px;"></li><li class="wmd-button wmd-help-button" style="background-position: -260px 0px;"><a href="http://answers.unity3d.com/static/markdown/help.html" target="_blank" title="Markdown Help"></a></li></ul></div><textarea name="body" class="commentBox redactor" data-type="comment"></textarea><div class="comments-form-attachments"><div></div><div></div></div>
+            </div>
+            <div class="comment-form-buttons">
+                <span id="comment-{{ post.id }}-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count warn">10
+                        |3000</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg">characters left</span>
+                    <span class="comments-chars-exceeded-msg">characters exceeded</span>
+                </span>
+
+                <div class="comment-form-buttons-container">
+                    <input type="submit" class="btn btn-primary comment-submit" value="Submit">
+                    <input type="submit" class="btn comment-cancel" value="Cancel">
+                </div>
+                
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <input type="hidden" name="parent" value="253571">
+        <input type="hidden" name="visibility" value="full">
+
+        <div style="display: none" class="comment-form-extra-inputs"></div>
+    </form>
+</div>
+                <div class="comments-container" id="comments-container-253571" nodeid="253571" style="display: block;">
+        <span name="377629"></span>
+        <div class="comment nsc " id="comment-377629" activerev="546590" nodeid="377629" authorid="48772">
+            <div class="comment-content" nodeid="377629">
+                <div class="comment-header" nodeid="377629">
+<a href="http://answers.unity3d.com/users/48772/dansuper.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="48772" data-hasqtip="15"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/39a4b4f4c64cdf6e1f21372fa36fa3ed" id="" alt="avatar image" title="DanSuper">
+</a><a href="http://answers.unity3d.com/users/48772/dansuper.html" class="comment-user userinfo" rel="user" nodeid="48772" data-hasqtip="16">DanSuper </a>                    
+                    <span class="comment-age friendly-date" title="2013, Jan 09 at 20:14:59+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/377629/view.html">Jan 09, 2013 at 08:14 PM</a>
+                    </span>
+                    <span id="post-377629-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-377629-info">
+
+                        <a id="vote-up-button-377629" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-377629" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-377629-left" class="comment-left">
+                    <div id="post-377629-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>I haven't been able to get this solution to work on OSX. The Mono distribution (2.10.10) only contains an Alias for libgdiplus.dylib and the actual library appears to be named libgdiplus.0.dylib Regardless... after following your instructions with both files I continue to get the DLLNotFound Exception for gdiplus.dll </p></div>
+
+            </div>
+        </div>
+        <span name="513167"></span>
+        <div class="comment nsc " id="comment-513167" activerev="724176" nodeid="513167" authorid="35442">
+            <div class="comment-content" nodeid="513167">
+                <div class="comment-header" nodeid="513167">
+<a href="http://answers.unity3d.com/users/35442/fornoreason1000-1.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="35442" data-hasqtip="17"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/6ec73c9341128f4b5ec8f4296ecacd2c" id="" alt="avatar image" title="Fornoreason1000">
+</a><a href="http://answers.unity3d.com/users/35442/fornoreason1000-1.html" class="comment-user userinfo" rel="user" nodeid="35442" data-hasqtip="18">Fornoreason1000 </a>                    
+                    <span class="comment-age friendly-date" title="2013, Aug 12 at 06:58:29+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/513167/view.html">Aug 12, 2013 at 06:58 AM</a>
+                    </span>
+                    <span id="post-513167-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-513167-info">
+
+                        <a id="vote-up-button-513167" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-513167" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-513167-left" class="comment-left">
+                    <div id="post-513167-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>It tends to Crash alot when using conversion between Textures and Bitmap Classes.<br></p>
+</div>
+
+            </div>
+        </div>
+        <span name="554517"></span>
+        <div class="comment nsc " id="comment-554517" activerev="780085" nodeid="554517" authorid="196050">
+            <div class="comment-content" nodeid="554517">
+                <div class="comment-header" nodeid="554517">
+<a href="http://answers.unity3d.com/users/196050/lightstriker-1.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="196050" data-hasqtip="19"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/d4b9260cfbcde27d3257ab07f3be9852" id="" alt="avatar image" title="LightStriker">
+</a><a href="http://answers.unity3d.com/users/196050/lightstriker-1.html" class="comment-user userinfo" rel="user" nodeid="196050" data-hasqtip="20">LightStriker </a>                    
+                    <span class="comment-age friendly-date" title="2013, Oct 12 at 16:36:50+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/554517/view.html">Oct 12, 2013 at 04:36 PM</a>
+                    </span>
+                    <span id="post-554517-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-554517-info">
+
+                        <a id="vote-up-button-554517" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-554517" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-554517-left" class="comment-left">
+                    <div id="post-554517-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>We have the same issue here on OSX. System.Drawing is fine, but crash went trying to resolve gdiplus.dll. It's really annoying. </p></div>
+
+            </div>
+        </div>
+        <span name="597920"></span>
+        <div class="comment nsc " id="comment-597920" activerev="838355" nodeid="597920" authorid="105458">
+            <div class="comment-content" nodeid="597920">
+                <div class="comment-header" nodeid="597920">
+<a href="http://answers.unity3d.com/users/105458/dafox.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="105458" data-hasqtip="21"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/c7b4616710b680b3e55368ae318b2d96" id="" alt="avatar image" title="DaFox">
+</a><a href="http://answers.unity3d.com/users/105458/dafox.html" class="comment-user userinfo" rel="user" nodeid="105458" data-hasqtip="22">DaFox </a>                    
+                    <span class="comment-age friendly-date" title="2013, Dec 16 at 13:24:54+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/597920/view.html">Dec 16, 2013 at 01:24 PM</a>
+                    </span>
+                    <span id="post-597920-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-597920-info">
+
+                        <a id="vote-up-button-597920" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-597920" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-597920-left" class="comment-left">
+                    <div id="post-597920-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>This saved my ass. I have an array of bytes in RGBA32 format I was wanting to dump them to disk and the Bitmap class within System.Drawing seemed to be by far the easiest method.</p> 
+<p>And it worked wonders.</p> 
+<pre><code> static void DumpRGBA32ToDisk(byte[] rgba, uint width, uint height) {
+     System.Drawing.Bitmap bmp = new System.Drawing.Bitmap((int)width, (int)height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+     System.Drawing.Imaging.BitmapData bmpData = bmp.LockBits(new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), System.Drawing.Imaging.ImageLockMode.WriteOnly, bmp.PixelFormat);
+     System.Runtime.InteropServices.Marshal.Copy(rgba, 0, bmpData.Scan0, rgba.Length);
+     bmp.UnlockBits(bmpData);
+     bmp.Save("TESTING.png");
+ }
+</code></pre></div>
+
+            </div>
+        </div>
+        <span name="776489"></span>
+        <div class="comment nsc " id="comment-776489" activerev="1077170" nodeid="776489" authorid="85502">
+            <div class="comment-content" nodeid="776489">
+                <div class="comment-header" nodeid="776489">
+<a href="http://answers.unity3d.com/users/85502/italoportinho.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="85502" data-hasqtip="23"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/48a175e605d6c55bbbe239c1a85689af" id="" alt="avatar image" title="italo.portinho">
+</a><a href="http://answers.unity3d.com/users/85502/italoportinho.html" class="comment-user userinfo" rel="user" nodeid="85502" data-hasqtip="24">italo.portinho </a>                    
+                    <span class="comment-age friendly-date" title="2014, Aug 22 at 17:17:38+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/776489/view.html">Aug 22, 2014 at 05:17 PM</a>
+                    </span>
+                    <span id="post-776489-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-776489-info">
+
+                        <a id="vote-up-button-776489" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-776489" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-776489-left" class="comment-left">
+                    <div id="post-776489-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>Thank you. Works great! </p></div>
+
+            </div>
+        </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        setupComments($('#answer-container-253571'), true, false, croles, "full", true)
+                    });
+                    $(document).ready(function () {
+                        var $answer = $("#answer-container-253571");
+                        var $replyLink = $answer.find(".reply-link");
+                        $replyLink.click(function (e) {
+                            e.preventDefault();
+                            $answer.find(".add-comment-link").click();
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+                <div id="answer-container-764708" class="post-container answer-container clearfix 
+            " nodeid="764708">
+            <div id="answer-764708" class="answer clearfix post">
+
+
+<div class="post-gravatar answer-gravatar" nodeid="764708">
+<a href="http://answers.unity3d.com/users/413381/altsoftlab.html" style="display: inline-block; max-width: 48px;" rel="user" nodeid="413381" data-hasqtip="25"> <img class="gravatar " width="48" src="./Using drawing package like System.Drawing - Unity Answers_files/9012de2896dabf25fc2c00f5ccccb6e8" id="" alt="avatar image" title="AltSoftLab">
+</a>    <div class="vote-widget">
+        <a id="vote-up-button-764708" class="vote-up votes" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" command="voteUp" title="Click to up vote"><i class="icon-chevron-up icon-2x"></i></a>
+        <span id="post-764708-score-wrapper" class="post-score-wrapper count votes positive" style="cursor:default">
+            <span id="post-764708-score" class="score positive">3</span>
+        </span>
+        <a id="vote-down-button-764708" class="vote-down votes" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" command="voteDown" title="Click to down vote"><i class="icon-chevron-down icon-2x"></i></a>
+    </div>
+</div>                <div class="labels">
+                    
+                    
+                </div>
+                <p class="muted author-info">
+                    <strong>Answer</strong> by <a href="http://answers.unity3d.com/users/413381/altsoftlab.html" rel="user" nodeid="413381" data-hasqtip="26">AltSoftLab</a>                    
+ <span class="post-info muted">·
+Aug 05, 2014 at 07:52 PM                    </span></p>
+
+                <div class="answer-body">
+                <p><em>WARNING: COMMERCIAL SOLUTION</em></p> 
+<p>You can use AltSketch Graphics Library that has System.Drawing like program interface and fully C# managed code (Mono, Mobile platforms supported too). </p> 
+<p>AltSketch project forum thread here: <a rel="nofollow" href="http://forum.unity3d.com/threads/on-sale-50-off-altsdk-altassets-altgui-altos-altsketch-altstudio-frameworks-editors.335966/#post-2182031">http://forum.unity3d.com/threads/on-sale-50-off-altsdk-altassets-altgui-altos-altsketch-altstudio-frameworks-editors.335966/#post-2182031</a></p> 
+<p>AltSketch Description:</p> 
+<p>AltSketch is a pure C# CLS compliant 100% managed, without unsafe blocks Vector Graphics Library with Software and Hardware Render Backends for Games, Scientific Applications &amp; other uses of Computer Graphics. All core functionality collected in one lightweight library AltSketch.dll for Microsoft .NET Framework or Mono (including Silverlight / Moonlight). It depends only on System assembly (.NET Framework 2.0).</p> 
+<p>AltSketch has Software and Hardware Render Backends (solid and texure AA visual data triangulation), contains a subsystem <strong>AltNETType - port of wonderful font rendering library Freetype</strong> and subsystem AltNETImage for Image manipulations (loading, saving, transformations).</p> 
+<p><strong>As AltSketch has several integrations with most popular GUI systems and Mobile platforms, you can develop and test a drawing part of your 3D application/game as independent program, and then easy integrate it into your main solution. Now you can draw Graphics in 3D with Brushes and Pens like you do it with any drawing library. It is flexible and useful development method in case of main project bulking and test complexity, or useful for team development process. Now you can develop graphics part of your Mobile applications without using an emulator as stand-alone application, only running on Mobile devices (or Emulator) for final tests.</strong></p> 
+<p>AltSketch has <strong>Virtual File System support with Zip containers</strong> for resources loading. All AltSketch functionality &amp; extensions works via VirtualFS and all resources can be loaded as from real file system, so from Zip containers (from files or memory streams).</p> 
+<p>AltSketch SDK includes wide variety of open source extensions: ported to AltSketch popular libraries (GUI, Plot, GIS, Computer Science, Physics, Graphics etc.): <strong>AForge, NPlot, OxyPlot, PieChart, ZedGraph, MigraDoc, PDFsharp, GMap, HTML Renderer, Box2D, Farseer Physics, etc.</strong></p> 
+<p>AltSketch SDK includes many Integration Demos with a wide variety GUI-s &amp; frameworks (all Integrations &amp; HW Render Backends are open sourced, so you can easily adapt it to your applications or improve it if you need)</p> 
+<p><img src="./Using drawing package like System.Drawing - Unity Answers_files/altsketch-unity.png" alt="alt text"></p>
+                </div>
+
+                <div class="comment-tools hidden"><span class="add-comment-link "><a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#">Comment</a></span></div>
+<div class="control-bar" nodeid="764708">
+    <div class="post-controls" nodeid="764708">
+            <a id="reply-link-764708" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#">Add comment</a>
+
+            <script type="text/javascript">
+                $(function() {
+                    $('#reply-link-764708').click(function() {
+                        commandUtils.showMessage('', "We're sorry, but you do not have enough permissions to post a comment.</br>If you believe this to be in error, contact your system administrator.");
+                        return false;
+                    });
+                });
+            </script>
+        ·
+        <a id="764708-show-comments-container" class="show-comments-container" commentcount="5"><i class="icon-comments"></i> Hide 5</a>
+    ·
+        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+    </div>
+</div>
+<div id="comment-764708-form-container" class="clearfix well comment-form-container">
+    <form id="comment-764708-form" action="http://answers.unity3d.com/comments/764708/add.json" method="POST" accept-charset="utf-8"><input type="hidden" name="TH_CSRF" value="5304542541472557696">
+        <div class="comment-form-widgets-container">
+        
+            <div class="comment-form-textarea-container">
+                <div class="wmd-button-bar"><ul class="wmd-button-row"><li class="wmd-button wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="background-position: 0px 0px;"></li><li class="wmd-button wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="background-position: -20px 0px;"></li><li class="wmd-spacer wmd-spacer1"></li><li class="wmd-button wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="background-position: -40px 0px;"></li><li class="wmd-button wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="background-position: -60px 0px;"></li><li class="wmd-button wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="background-position: -80px 0px;"></li><li class="wmd-button wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="background-position: -120px 0px;"></li><li class="wmd-button wmd-attachment-button" title="Attachment Ctrl+U" style="background-position: -100px 0px;"></li><li class="wmd-spacer wmd-spacer2"></li><li class="wmd-button wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="background-position: -140px 0px;"></li><li class="wmd-button wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="background-position: -160px 0px;"></li><li class="wmd-button wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="background-position: -180px 0px;"></li><li class="wmd-button wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="background-position: -200px 0px;"></li><li class="wmd-spacer wmd-spacer3"></li><li class="wmd-button wmd-undo-button" title="Undo - Ctrl+Z" style="background-position: -220px -20px;"></li><li class="wmd-button wmd-redo-button" title="Redo - Ctrl+Y" style="background-position: -240px -20px;"></li><li class="wmd-button wmd-help-button" style="background-position: -260px 0px;"><a href="http://answers.unity3d.com/static/markdown/help.html" target="_blank" title="Markdown Help"></a></li></ul></div><textarea name="body" class="commentBox redactor" data-type="comment"></textarea><div class="comments-form-attachments"><div></div><div></div></div>
+            </div>
+            <div class="comment-form-buttons">
+                <span id="comment-{{ post.id }}-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count warn">10
+                        |3000</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg">characters left</span>
+                    <span class="comments-chars-exceeded-msg">characters exceeded</span>
+                </span>
+
+                <div class="comment-form-buttons-container">
+                    <input type="submit" class="btn btn-primary comment-submit" value="Submit">
+                    <input type="submit" class="btn comment-cancel" value="Cancel">
+                </div>
+                
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <input type="hidden" name="parent" value="764708">
+        <input type="hidden" name="visibility" value="full">
+
+        <div style="display: none" class="comment-form-extra-inputs"></div>
+    </form>
+</div>
+                <div class="comments-container" id="comments-container-764708" nodeid="764708" style="display: block;">
+        <span name="996042"></span>
+        <div class="comment nsc " id="comment-996042" activerev="1371523" nodeid="996042" authorid="645017">
+            <div class="comment-content" nodeid="996042">
+                <div class="comment-header" nodeid="996042">
+<a href="http://answers.unity3d.com/users/645017/alexander31.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="645017" data-hasqtip="27"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/70875cb334b5e77c032617ff8d549173" id="" alt="avatar image" title="Alexander31">
+</a><a href="http://answers.unity3d.com/users/645017/alexander31.html" class="comment-user userinfo" rel="user" nodeid="645017" data-hasqtip="28">Alexander31 </a>                    
+                    <span class="comment-age friendly-date" title="2015, Jun 28 at 18:34:19+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/996042/view.html">Jun 28, 2015 at 06:34 PM</a>
+                    </span>
+                    <span id="post-996042-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-996042-info">
+
+                        <a id="vote-up-button-996042" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-996042" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-996042-left" class="comment-left">
+                    <div id="post-996042-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>Are you really ported full FreeType to C#? If yes, only because of this one thing you are amazing guys!!! And other tools looks great! What is the part of System.Drawing/GDI+ supported by AltSketch? </p></div>
+
+            </div>
+        </div>
+        <span name="998092"></span>
+        <div class="comment nsc " id="comment-998092" activerev="1374312" nodeid="998092" authorid="639091">
+            <div class="comment-content" nodeid="998092">
+                <div class="comment-header" nodeid="998092">
+<a href="http://answers.unity3d.com/users/639091/domiii.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="639091" data-hasqtip="29"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/352fae3a9aa66ae9854753bef3d2e037" id="" alt="avatar image" title="domiii">
+</a><a href="http://answers.unity3d.com/users/639091/domiii.html" class="comment-user userinfo" rel="user" nodeid="639091" data-hasqtip="30">domiii </a>                    
+                    <span class="comment-age friendly-date" title="2015, Jul 01 at 13:26:44+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/998092/view.html">Jul 01, 2015 at 01:26 PM</a>
+                    </span>
+                    <span id="post-998092-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-998092-info">
+
+                        <a id="vote-up-button-998092" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-998092" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-998092-left" class="comment-left">
+                    <div id="post-998092-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>You might want to mention that this costs 50$US... </p></div>
+
+            </div>
+        </div>
+        <span name="998443"></span>
+        <div class="comment nsc " id="comment-998443" activerev="1374810" nodeid="998443" authorid="153967">
+            <div class="comment-content" nodeid="998443">
+                <div class="comment-header" nodeid="998443">
+<a href="http://answers.unity3d.com/users/153967/slippdouglas.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="153967" data-hasqtip="31"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/30b1612b312bcfb53ab73dc435ae7879" id="" alt="avatar image" title="slippdouglas">
+</a><a href="http://answers.unity3d.com/users/153967/slippdouglas.html" class="comment-user userinfo" rel="user" nodeid="153967" data-hasqtip="32">slippdouglas </a>                    
+                    <span class="comment-age friendly-date" title="2015, Jul 01 at 20:25:16+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/998443/view.html">Jul 01, 2015 at 08:25 PM</a>
+                    </span>
+                    <span id="post-998443-score" class="comment-score">1</span>
+                    <div class="comment-info" id="comment-998443-info">
+
+                        <a id="vote-up-button-998443" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-998443" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-998443-left" class="comment-left">
+                    <div id="post-998443-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p><a rel="user" href="http://answers.unity3d.com/users/639091/domiii.html" nodeid="639091" data-hasqtip="33">@domiii</a> Agreed.  Stack Overflow's community-decided policy is that if you're promoting your own tool/library/framework/app/etc., your post should be prefixed with a warning.  The intent is to keep SO from becoming just a bunch of advertisements.  In that spirit, I'm downvoting this answer until an italicized warning is added to the top of it; I'll change my downvote to an upvote then.
+</p>
+</div>
+
+            </div>
+        </div>
+        <span name="998470"></span>
+        <div class="comment nsc " id="comment-998470" activerev="1374856" nodeid="998470" authorid="413381">
+            <div class="comment-content" nodeid="998470">
+                <div class="comment-header" nodeid="998470">
+<a href="http://answers.unity3d.com/users/413381/altsoftlab.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="413381" data-hasqtip="34"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/9012de2896dabf25fc2c00f5ccccb6e8(1)" id="" alt="avatar image" title="AltSoftLab">
+</a><a href="http://answers.unity3d.com/users/413381/altsoftlab.html" class="comment-user userinfo" rel="user" nodeid="413381" data-hasqtip="35">AltSoftLab </a>                    
+                    <span class="comment-age friendly-date" title="2015, Jul 01 at 21:11:15+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/998470/view.html">Jul 01, 2015 at 09:11 PM</a>
+                    </span>
+                    <span id="post-998470-score" class="comment-score">2</span>
+                    <div class="comment-info" id="comment-998470-info">
+
+                        <a id="vote-up-button-998470" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-998470" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-998470-left" class="comment-left">
+                    <div id="post-998470-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>Hi guys! No problem. Is it better now? </p></div>
+
+            </div>
+        </div>
+        <span name="998472"></span>
+        <div class="comment nsc " id="comment-998472" activerev="1374859" nodeid="998472" authorid="413381">
+            <div class="comment-content" nodeid="998472">
+                <div class="comment-header" nodeid="998472">
+<a href="http://answers.unity3d.com/users/413381/altsoftlab.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="413381" data-hasqtip="36"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/9012de2896dabf25fc2c00f5ccccb6e8(1)" id="" alt="avatar image" title="AltSoftLab">
+</a><a href="http://answers.unity3d.com/users/413381/altsoftlab.html" class="comment-user userinfo" rel="user" nodeid="413381" data-hasqtip="37">AltSoftLab </a>                    
+                    <span class="comment-age friendly-date" title="2015, Jul 01 at 21:14:36+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/998472/view.html">Jul 01, 2015 at 09:14 PM</a>
+                    </span>
+                    <span id="post-998472-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-998472-info">
+
+                        <a id="vote-up-button-998472" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-998472" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-998472-left" class="comment-left">
+                    <div id="post-998472-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p><a rel="nofollow" href="http://answers.unity3d.com/users/645017/alexander31.html">Alexander31</a> all information you can get on <a rel="nofollow" href="http://forum.unity3d.com/threads/on-sale-50-off-altsdk-altassets-altgui-altos-altsketch-altstudio-frameworks-editors.335966/#post-2182031">AltSDK Asset Unity forum thred</a></p></div>
+
+            </div>
+        </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        setupComments($('#answer-container-764708'), true, false, croles, "full", true)
+                    });
+                    $(document).ready(function () {
+                        var $answer = $("#answer-container-764708");
+                        var $replyLink = $answer.find(".reply-link");
+                        $replyLink.click(function (e) {
+                            e.preventDefault();
+                            $answer.find(".add-comment-link").click();
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+                <div id="answer-container-693559" class="post-container answer-container clearfix 
+            " nodeid="693559">
+            <div id="answer-693559" class="answer clearfix post">
+
+
+<div class="post-gravatar answer-gravatar" nodeid="693559">
+<a href="http://answers.unity3d.com/users/153967/slippdouglas.html" style="display: inline-block; max-width: 48px;" rel="user" nodeid="153967" data-hasqtip="38"> <img class="gravatar " width="48" src="./Using drawing package like System.Drawing - Unity Answers_files/30b1612b312bcfb53ab73dc435ae7879(1)" id="" alt="avatar image" title="slippdouglas">
+</a>    <div class="vote-widget">
+        <a id="vote-up-button-693559" class="vote-up votes" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" command="voteUp" title="Click to up vote"><i class="icon-chevron-up icon-2x"></i></a>
+        <span id="post-693559-score-wrapper" class="post-score-wrapper count votes positive" style="cursor:default">
+            <span id="post-693559-score" class="score positive">1</span>
+        </span>
+        <a id="vote-down-button-693559" class="vote-down votes" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" command="voteDown" title="Click to down vote"><i class="icon-chevron-down icon-2x"></i></a>
+    </div>
+</div>                <div class="labels">
+                    
+                    
+                </div>
+                <p class="muted author-info">
+                    <strong>Answer</strong> by <a href="http://answers.unity3d.com/users/153967/slippdouglas.html" rel="user" nodeid="153967" data-hasqtip="39">slippdouglas</a>                    
+ <span class="post-info muted">·
+Apr 24, 2014 at 07:28 AM                    </span></p>
+
+                <div class="answer-body">
+                <p>A good portion of the <a href="http://www.aforgenet.com/">AForge.NET</a> graphics framework (AFAIK, all of <a href="http://www.aforgenet.com/aforge/framework/docs/html/d087503e-77da-dc47-0e33-788275035a90.htm">AForge.Imaging</a>) is Mono-compatible <em>(according to <a href="http://www.aforgenet.com/forum/viewtopic.php?f=2&amp;t=870">this forum post</a>)</em>.</p>
+<p>I haven't yet taken the steps to build a DLL and try it in Unity— would love to hear if anyone else takes a stab at it.&nbsp; And I'll update this answer if I get it working.
+</p>
+
+                </div>
+
+                <div class="comment-tools hidden"><span class="add-comment-link "><a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#">Comment</a></span></div>
+<div class="control-bar" nodeid="693559">
+    <div class="post-controls" nodeid="693559">
+            <a id="reply-link-693559" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#">Add comment</a>
+
+            <script type="text/javascript">
+                $(function() {
+                    $('#reply-link-693559').click(function() {
+                        commandUtils.showMessage('', "We're sorry, but you do not have enough permissions to post a comment.</br>If you believe this to be in error, contact your system administrator.");
+                        return false;
+                    });
+                });
+            </script>
+        ·
+        <a id="693559-show-comments-container" class="show-comments-container" commentcount="1"><i class="icon-comments"></i> Hide 1</a>
+    ·
+        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+    </div>
+</div>
+<div id="comment-693559-form-container" class="clearfix well comment-form-container">
+    <form id="comment-693559-form" action="http://answers.unity3d.com/comments/693559/add.json" method="POST" accept-charset="utf-8"><input type="hidden" name="TH_CSRF" value="5304542541472557696">
+        <div class="comment-form-widgets-container">
+        
+            <div class="comment-form-textarea-container">
+                <div class="wmd-button-bar"><ul class="wmd-button-row"><li class="wmd-button wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="background-position: 0px 0px;"></li><li class="wmd-button wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="background-position: -20px 0px;"></li><li class="wmd-spacer wmd-spacer1"></li><li class="wmd-button wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="background-position: -40px 0px;"></li><li class="wmd-button wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="background-position: -60px 0px;"></li><li class="wmd-button wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="background-position: -80px 0px;"></li><li class="wmd-button wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="background-position: -120px 0px;"></li><li class="wmd-button wmd-attachment-button" title="Attachment Ctrl+U" style="background-position: -100px 0px;"></li><li class="wmd-spacer wmd-spacer2"></li><li class="wmd-button wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="background-position: -140px 0px;"></li><li class="wmd-button wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="background-position: -160px 0px;"></li><li class="wmd-button wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="background-position: -180px 0px;"></li><li class="wmd-button wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="background-position: -200px 0px;"></li><li class="wmd-spacer wmd-spacer3"></li><li class="wmd-button wmd-undo-button" title="Undo - Ctrl+Z" style="background-position: -220px -20px;"></li><li class="wmd-button wmd-redo-button" title="Redo - Ctrl+Y" style="background-position: -240px -20px;"></li><li class="wmd-button wmd-help-button" style="background-position: -260px 0px;"><a href="http://answers.unity3d.com/static/markdown/help.html" target="_blank" title="Markdown Help"></a></li></ul></div><textarea name="body" class="commentBox redactor" data-type="comment"></textarea><div class="comments-form-attachments"><div></div><div></div></div>
+            </div>
+            <div class="comment-form-buttons">
+                <span id="comment-{{ post.id }}-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count warn">10
+                        |3000</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg">characters left</span>
+                    <span class="comments-chars-exceeded-msg">characters exceeded</span>
+                </span>
+
+                <div class="comment-form-buttons-container">
+                    <input type="submit" class="btn btn-primary comment-submit" value="Submit">
+                    <input type="submit" class="btn comment-cancel" value="Cancel">
+                </div>
+                
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <input type="hidden" name="parent" value="693559">
+        <input type="hidden" name="visibility" value="full">
+
+        <div style="display: none" class="comment-form-extra-inputs"></div>
+    </form>
+</div>
+                <div class="comments-container" id="comments-container-693559" nodeid="693559" style="display: block;">
+        <span name="987215"></span>
+        <div class="comment nsc " id="comment-987215" activerev="1374857" nodeid="987215" authorid="413381">
+            <div class="comment-content" nodeid="987215">
+                <div class="comment-header" nodeid="987215">
+<a href="http://answers.unity3d.com/users/413381/altsoftlab.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="413381" data-hasqtip="40"> <img class="gravatar comment-user-gravatar" width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/9012de2896dabf25fc2c00f5ccccb6e8(1)" id="" alt="avatar image" title="AltSoftLab">
+</a><a href="http://answers.unity3d.com/users/413381/altsoftlab.html" class="comment-user userinfo" rel="user" nodeid="413381" data-hasqtip="41">AltSoftLab </a>                    
+                    <span class="comment-age friendly-date" title="2015, Jun 15 at 17:55:12+0000">
+                        ·
+                        <a href="http://answers.unity3d.com/comments/987215/view.html">Jun 15, 2015 at 05:55 PM</a>
+                    </span>
+                    <span id="post-987215-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-987215-info">
+
+                        <a id="vote-up-button-987215" command="voteUp" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-up " title="Click to up vote"><i class=" icon-chevron-up"></i></a>
+
+                        <a id="vote-down-button-987215" command="voteDown" href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+
+                        <a href="http://answers.unity3d.com/questions/53170/using-drawing-package-like-systemdrawing.html#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-987215-left" class="comment-left">
+                    <div id="post-987215-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p>Some parts of pure C# AForge functionality have been ported to AltSketch <a rel="nofollow" href="http://forum.unity3d.com/threads/on-sale-50-off-altsdk-altassets-altgui-altos-altsketch-altstudio-frameworks-editors.335966/#post-2182031">http://forum.unity3d.com/threads/on-sale-50-off-altsdk-altassets-altgui-altos-altsketch-altstudio-frameworks-editors.335966/#post-2182031</a> </p></div>
+
+            </div>
+        </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        setupComments($('#answer-container-693559'), true, false, croles, "full", true)
+                    });
+                    $(document).ready(function () {
+                        var $answer = $("#answer-container-693559");
+                        var $replyLink = $answer.find(".reply-link");
+                        $replyLink.click(function (e) {
+                            e.preventDefault();
+                            $answer.find(".add-comment-link").click();
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+</div>
+</div>
+
+
+<style type="text/css">
+    #notifyFollowers{
+        margin: 0px;
+    }
+</style>
+<div class="widget answer-form-widget">
+    <div class="widget-header">
+        <i class="icon-pencil"></i>
+
+        <h3>Your answer</h3>
+    </div>
+    <div class="widget-content">
+
+        <div class="row-fluid">
+            <div class="span1 hidden-phone">
+<img src="./Using drawing package like System.Drawing - Unity Answers_files/avi.jpg">
+
+            </div>
+
+            <div class="span11">
+                <form id="answer-form" data-drafttype="an answer" data-draftkey="answer-53170" action="http://answers.unity3d.com/answers/53170/post.html" method="POST"><input type="hidden" name="TH_CSRF" value="5304542541472557696">
+
+
+                    <fieldset>
+                        <div class="control-group">
+                            <div class="controls">
+                                <div id="wmd-button-bar" class="wmd-panel wmd-button-bar"><ul class="wmd-button-row"><li class="wmd-button wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="background-position: 0px 0px;"></li><li class="wmd-button wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="background-position: -20px 0px;"></li><li class="wmd-spacer wmd-spacer1"></li><li class="wmd-button wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="background-position: -40px 0px;"></li><li class="wmd-button wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="background-position: -60px 0px;"></li><li class="wmd-button wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="background-position: -80px 0px;"></li><li class="wmd-button wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="background-position: -120px 0px;"></li><li class="wmd-button wmd-attachment-button" title="Attachment Ctrl+U" style="background-position: -100px 0px;"></li><li class="wmd-spacer wmd-spacer2"></li><li class="wmd-button wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="background-position: -140px 0px;"></li><li class="wmd-button wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="background-position: -160px 0px;"></li><li class="wmd-button wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="background-position: -180px 0px;"></li><li class="wmd-button wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="background-position: -200px 0px;"></li><li class="wmd-spacer wmd-spacer3"></li><li class="wmd-button wmd-undo-button" title="Undo - Ctrl+Z" style="background-position: -220px -20px;"></li><li class="wmd-button wmd-redo-button" title="Redo - Ctrl+Y" style="background-position: -240px -20px;"></li><li class="wmd-button wmd-help-button" style="background-position: -260px 0px;"><a href="http://answers.unity3d.com/static/markdown/help.html" target="_blank" title="Markdown Help"></a></li></ul></div><textarea class="redactor" data-type="answer" id="body" name="body" rows="10" placeholder="Fill in the details..."></textarea><div id="previewer" class="wmd-panel"></div>
+                                <span class="help-inline">Hint: You can notify a user about this post by typing @username</span>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+
+<script type="text/javascript">
+    var attachmentsEnabled = true;
+    pageContext.url.authorizeAttachmentsUrl = "/authorizeAttachment.json";
+    pageContext.authorizeUploadContext = {
+        type: 'answer'
+    };
+</script>
+
+<div id="main-attachments-container" class="message">
+    <p>
+        <strong><label>Attachments:</label></strong>
+Up to 2 attachments (including images) can be used with a maximum of 524.3 kB each and 1.0 MB total.    </p>
+
+    <div id="img-attachments-container"></div>
+    <div id="attachments-container"></div>
+</div>
+
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="Post Answer">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+        commands.likeComment.setMsg('title.on', "click to cancel");
+    commands.likeComment.setMsg('title.off', "I like this comment");
+
+    commands.likeComment.setUrl('click.on', "/commands/%25ID%25/cancelvote.json");
+    commands.likeComment.setUrl('click.off', "/commands/%25ID%25/voteup.json");
+
+    commands.deleteComment.setUrl('click.off', "/commands/%25ID%25/delete.json");
+
+    commands.voteUp.urls = commands.likeComment.urls;
+
+    commands.voteUp.setMsg('title.on',  "Click to cancel vote");
+    commands.voteUp.setMsg('title.off',  "Click to up vote");
+
+    commands.voteDown.setUrl('click.on', commands.voteUp.urls['click.on']);
+    commands.voteDown.setUrl('click.off', "/commands/%25ID%25/votedown.json");
+
+    commands.voteDown.setMsg('title.on',  commands.voteUp.messages['title.on']);
+    commands.voteDown.setMsg('title.off', "Click to down vote");
+
+    commands.acceptAnswer.setUrl('click.on', "/commands/%25ID%25/unaccept.json");
+    commands.acceptAnswer.setUrl('click.off', "/commands/%25ID%25/accept.json");
+
+    commands.markFavorite.setMsg('title.on', "Remove your favorite mark from this question");
+    commands.markFavorite.setMsg('title.off', "Mark this question as favorite");
+
+    commands.markFavorite.setUrl('click.on', "/commands/%25ID%25/unmarkfavorite.json");
+    commands.markFavorite.setUrl('click.off', "/commands/%25ID%25/markfavorite.json");
+
+    commands.reportPost.setMsg('title.on', "Cancel your report");
+    commands.reportPost.setMsg('title.off', "Report as offensive (i.e containing spam, advertising, malicious text, etc.)");
+    commands.reportPost.setMsg('link.on', "Cancel Report");
+    commands.reportPost.setMsg('link.off', "Report");
+    commands.reportPost.setMsg('description', "Please select a reason below or use the text box to input your own reason.");
+
+    commands.reportPost.setMsg('reportHints', [
+        "Spam",
+        "Advertising",
+        "Offensive, Abusive, or Inappropriate",
+        "Content violates terms of use",
+        "Copyright Violation",
+        "Misleading",
+        "Someone is not being nice",
+        "Not relevant/off-topic",
+        "Other"]);
+
+
+    commands.reportPost.setUrl('click.on', "/commands/%25ID%25/cancelReport.json");
+    commands.reportPost.setUrl('click.off', "/commands/%25ID%25/report.json");
+
+    commands.publishPost.setUrl('click', "/commands/%25ID%25/publish.json");
+    commands.publishPost.setMsg('linkText', "Publish");
+
+    commands.sendToMod.setUrl('click', "/commands/%25ID%25/sendToMod.json");
+    commands.sendToMod.setMsg('linkText', "Send to Moderation");
+
+    commands.redirectQuestion.setMsg('linkText.off', "Redirect");
+    commands.redirectQuestion.setMsg('linkText.on', "Cancel Redirect");
+    commands.redirectQuestion.setMsg('header', "Redirect Into An Existing Question");
+    commands.redirectQuestion.setMsg('search', "Search for a question:");
+    commands.redirectQuestion.setMsg('related', "Pick a related question:");
+
+    commands.redirectQuestion.setUrl('click.off', "/commands/%25ID%25/redirect.json");
+    commands.redirectQuestion.setUrl('click.on', "/commands/%25ID%25/unredirect.json");
+    commands.redirectQuestion.setUrl('search', "/search.json");
+
+    commands.deletePost.urls = commands.deleteComment.urls;
+    commands.deletePost.setUrl('click.on', "/commands/%25ID%25/undelete.json");
+
+    commands.deletePost.setMsg('linkText.off', "Delete");
+    commands.deletePost.setMsg('linkText.on', "Undelete");
+
+    commands.closeQuestion.setMsg('linkText.on', "Reopen");
+    commands.closeQuestion.setMsg('linkText.off', "Close");
+    commands.closeQuestion.setMsg('description', "Please select a reason below or use the text box to input your own reason.");
+    commands.closeQuestion.setMsg('lock', "also lock comments");
+
+    commands.closeQuestion.setMsg('reportHints', [
+        "Duplicate Question",
+        "Question is off-topic or not relevant",
+        "Too subjective and argumentative",
+        "The question is answered, right answer was accepted",
+        "Problem is not reproducible or outdated",
+        "Other"]);
+
+    commands.closeQuestion.setUrl('click.on', "/commands/%25ID%25/reopen.json");
+    commands.closeQuestion.setUrl('click.off', "/commands/%25ID%25/close.json");
+
+    commands.lockPost.setMsg('linkText.on', "Unlock Comments");
+    commands.lockPost.setMsg('linkText.off', "Lock Comments");
+    commands.lockPost.setMsg('description', "Please select a reason below or use the text box to input your own reason.");
+
+    commands.lockPost.setMsg('reportHints', [
+        "Discussion has gone too far",
+        "No more thank you or +1 comments",
+        "Other"]);
+
+    commands.lockPost.setUrl('click.on', "/commands/%25ID%25/unlock.json");
+    commands.lockPost.setUrl('click.off', "/commands/%25ID%25/lock.json");
+
+    commands.wikifyPost.setMsg('linkText.off', "Wikify");
+    commands.wikifyPost.setMsg('linkText.on', "Unwikify");
+
+    commands.wikifyPost.setUrl('click.on', "/commands/%25ID%25/cancelwiki.json");
+    commands.wikifyPost.setUrl('click.off', "/commands/%25ID%25/wikify.json");
+
+    commands.convertToComment.setUrl('click', "/commands/%25ID%25/convertToComment.json");
+    commands.convertToComment.setUrl('candidates', "/commands/%25ID%25/convertToComment/possibleParents.json");
+    commands.convertToComment.setMsg('linkText', "Convert to Comment");
+    commands.convertToComment.setMsg('description', "Place the comment under:");
+    commands.convertToComment.setMsg('question', "Question");
+    commands.convertToComment.setMsg('answer', "Answer");
+
+    commands.convertToAnswer.setUrl('click', "/commands/%25ID%25/convertToAnswer.json");
+
+    commands.moveToSpace.setUrl('click', "/commands/%25ID%25/moveToSpace.json");
+    commands.moveToSpace.setUrl('candidates', "/spaces/%25ID%25/moveToCandidates.json");
+    commands.moveToSpace.setMsg('linkText', "Move");
+    commands.moveToSpace.setMsg('description', "Select the space to move the question to");
+
+	commands.switchPrivacy.setMsg('linkText.off', "Make private");
+    commands.switchPrivacy.setMsg('linkText.on', "Make public");
+
+    commands.switchPrivacy.setUrl('click.on', "/commands/%25ID%25/makePublic.json");
+    commands.switchPrivacy.setUrl('click.off', "/commands/%25ID%25/makePrivate.json");
+
+    commands.giveReputation.setUrl('click', "/commands/giveReputation.json");
+    commands.giveReputation.setMsg('answerIntro', "If you like this answer you can reward the user with reputation points.");
+    commands.giveReputation.setMsg('questionIntro', "If you like this question you can reward the user with reputation points.");
+    commands.giveReputation.setMsg('description', "Use the input field to choose the number of points you would like to give.");
+    commands.giveReputation.setMsg('points', "Points:");
+
+    commands.share.setUrl("answer-url", "http://answers.unity3d.com/answers/%25ID%25/view.html");
+    commands.share.setUrl("comment-url", "http://answers.unity3d.com/comments/%25ID%25/view.html");
+    commands.share.setMsg("description", "Copy and paste the URL below to share a direct link to this answer.");
+    commands.share.setMsg("comment-description", "Copy and paste the URL below to share a direct link to this comment.");
+    commands.share.setMsg("title", "Share a link to this answer");
+    commands.share.setMsg("comment-title", "Share a link to this comment");
+
+    pageContext.i18n.seeRevisions = 'see revisions';
+    pageContext.url.seeRevisions = '/revisions/%25ID%25.html';
+    pageContext.url.questionEdit = '/questions/%25ID%25/edit.html';
+    pageContext.url.answerEdit = '/answers/%25ID%25/edit.html';
+    pageContext.url.commentEdit = '/comments/%25ID%25/edit.html';
+
+</script>
+<script type="text/x-jquery-tmpl" id="give-reputation-dialog">
+        <p style="font-size:14px;">{{if isAnswer }} ${answerIntro} {{/if}} {{if !isAnswer }} ${questionIntro} {{/if}}</p>
+        <p style="font-size:14px;">${description}</p>
+        <form >
+            <div style="font-size:14px;">
+                ${points} <input class="input-mini" style="margin-top: 10px;" type="text" name="points" /> (${currentUserPoints} ${currentPointsLabel})
+            </div>
+        </form>
+        <p style="color:red" id="invaliderror"></p>
+</script>
+<script type="text/x-jquery-tmpl" id="flag-or-close-post-dialog">
+
+    <p>${description}</p>
+
+    <form style="with: 250px;margin-bottom:10px">
+      <p>  <select name="sample" class="prompt-examples" style="width: 100%;">
+            {{each(i, hint) reportHints }}
+            <option value="${hint}">${hint}</option>
+            {{/each}}
+        </select>
+
+          </p>
+        <p><textarea name="prompt" style="width: 100%; padding: 0;"></textarea>
+        {{if canLock }}
+        <input type="checkbox" name="lock" value="true" /> ${lock}
+        {{/if}}
+        </p>
+    </form>
+
+</script>
+<script type="text/x-jquery-tmpl" id="convert-to-comment-dialog">
+    ${description}
+    <form>
+        <select name="targetParent" class="prompt-examples">
+            {{each(p, target) parentCandidates }}
+            <option value="${target.id}">${target.summary}</option>
+            {{/each}}
+        </select>
+    </form>
+</script>
+<script type="text/x-jquery-tmpl" id="move-to-space-dialog">
+    ${description}
+    <form>
+        <select name="targetSpace" class="prompt-examples">
+            {{each(p, target) spaces }}
+            <option value="${target.id}">${target.name}</option>
+            {{/each}}
+        </select>
+    </form>
+</script>
+
+<script type="text/x-jquery-tmpl" id="share-dialog">
+    <p>${description}</p>
+    <input type="text" class="input-block-level" value="${shareURL}"/>
+</script>
+
+<script type="text/x-jquery-tmpl" id="advanced-visibility-dialog">
+    <form>
+        <div>
+            {{if (perm.ag || perm.og) }}
+                <h4>${msg.selectGroups}</h4>
+                {{if groupsCheck }}
+                    {{each(i, group) groups }}
+                        <p><input type="checkbox" name="recipients" value="${group.id}" /> ${group.name}</p>
+                    {{/each}}
+                {{else}}
+                    <input type="text" class="comment-recipients-groups-autocomplete" />
+                    <div class="comment-recipients-groups-container" ></div>
+                {{/if}}
+            {{/if}}
+            {{if (perm.op || perm.mod || perm.as) }}
+                <h4>${msg.selectOther}</h4>
+                {{if perm.op }}
+                    <input type="checkbox" name="specialRecipients" value="op" /> ${msg.selectOriginalPoster}<br />
+                {{/if}}
+                {{if perm.m }}
+                    <input type="checkbox" name="specialRecipients" value="mod" /> ${msg.selectModerators}<br />
+                {{/if}}
+                {{if perm.as }}
+                    <input type="checkbox" name="specialRecipients" value="asg" /> ${msg.selectAssignees}<br />
+                {{/if}}
+            {{/if}}
+        </div>
+    </form>
+</script>
+<script type="text/x-jquery-tmpl" id="new-comment-skeleton">
+<div class="comment nsc" id="comment-${comment.id}" activerev="${comment.activeRevisionId}" nodeid="${comment.id}"
+     authorid="${comment.author.id}">
+<div class="comment-content" nodeid="${comment.id}">
+<div class="comment-header">
+    <a class="comment-user-gravatar" nodeId="${author.id}" rel="user" href="${author.url}"><img class="gravatar"
+                                                                                                src="${author.avatar}"
+                                                                                                style="width:${comment.depth > 0 ? 24 : 36};"></a>
+    <a class="comment-user userinfo" nodeId="${author.id}" rel="user" href="${author.url}">${(pageContext.userRealName && comment.author.realname)? comment.author.realname : comment.author.username}</a>
+    {{if comment.parentId != comment.originalParentId}}<span class="comment-parent"><i class="icon-share-alt"></i> ${(pageContext.userRealName && comment.parentAuthor.realname)?comment.parentAuthor.realname : comment.parentAuthor.username}</span>
+    {{/if}}
+    <span class="comment-age friendly-date" title="${creationDateFormatted}">
+                &middot; ${commentDateFriendly}
+            </span>
+<div class="comment-info btn-broup" id="comment-${comment.id}-info">
+    <span id="post-${comment.id}-score" class="comment-score">${comment.score}</span>
+        <a id="vote-up-button-${comment.id}" command="voteUp"  href="#" class="make-tooltip"
+           title="Vote comment up">Like </a>
+        <a id="vote-down-button-${comment.id}" command="voteDown" href="#" class="make-tooltip"
+         title="Vote comment up"><i class=" icon-chevron-down"></i></a>
+
+        {{if crel.canComment }}
+            <a id="comment-${comment.id}-reply" href="#" class="comment-reply"><i
+                class="icon-reply"></i> Reply</a>
+        {{/if}}
+
+        <a href="#" class="ajax-command"
+                           command="share">Share</a>
+
+        {{if (crel.canReport || crel.canCancelReport) || crel.canEdit || crel.canDelete || crel.canConvertToAnswer }}
+
+        <div class="dropdown" style="display:inline">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class=" icon-cog"></i> More...</a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                {{if crel.canReport || crel.canCancelReport }}
+                    <li><a rel="nofollow" class="ajax-coxmmand {{if crel.reported }} on{{/if}}" href="#"
+                           command="reportPost">
+
+
+                        {{if !crel.reported }}123Flag{{else}}label.report.cancel{{/if}}
+                        {{if crel.canViewReports }}(${comment.reportCount}){{/if}}
+                    </a></li>
+                {{/if}}
+                {{if crel.canViewRevisions }}
+                    <li class="item">
+                        <a rel="nofollow" class="node-tools-revisions-link"
+                           href="${revisionUrl}">See revisions</a>
+                    </li>
+
+                {{/if}}
+                {{if crel.canEdit }}
+                    <li><a id="comment-${comment.id}-edit" href="#"
+                           class="comment-edit">Edit</a>
+                    </li>
+                {{/if}}
+                {{if crel.canDelete }}
+                    <li><a id="comment-${comment.id}-delete" href="#" class="comment-delete"
+                           command="deleteComment">Delete </a>
+                    </li>
+                {{/if}}
+                {{if crel.canConvertToAnswer }}
+                    <li><a href="#" class="convert-to-answer"
+                           command="convertToAnswer">Convert to answer</a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+
+        {{/if}}
+
+</div>
+</div>
+    <div id="comment-${comment.id}-left" class="comment-left">
+        <div id="post-${comment.id}-score" class="comment-score"></div>
+    </div>
+    <div class="comment-text">{{html comment.bodyAsHTML}}</div>
+</div>
+</div>
+</script>
+<script type="text/x-jquery-tmpl" id="flag-or-close-post-dialog">
+    ${description}
+    <select name="sample" class="prompt-examples">
+        {{each(i, hint) reportHints }}
+        <option value="${hint}">${hint}</option>
+        {{/each}}
+    </select>
+    <textarea name="prompt">${reportHints[0]}</textarea>
+</script><script type="text/x-jquery-tmpl" id="redirect-question-dialog">
+    <h4>Using drawing package like System.Drawing</h4>
+    <label class="control-label" style="margin: 18px 0 22px;" for="searchQuestion">into:</label>
+    <div class="controls">
+        <div class="SearchAnswers">
+            <input type="text" style="background-image: none;" class="textInput input-block-level" id="searchQuestion" placeholder="Search for a question" onclick="if(this.value=='Find Question'){this.value = ''}" />
+            <div id="results"></div>
+            <form class="hidden">
+                <input type="hidden" name="to" />
+            </form>
+        </div>
+    </div>
+</script><script type="text/x-jquery-tmpl" id="switch-privacy-dialog">
+Are you sure you want to make this post private? Only you and users with special permissions will be able to see it.</script><script type="text/x-jquery-tmpl" id="post-wiki-mark">
+    <div class="community-wiki">
+        <div class="wiki-icon">&nbsp;</div>
+        <div class="wiki-text">
+            {{if isAnswer }}
+        This answer is marked "community wiki".
+            {{else}}
+        This question is marked "community wiki".
+            {{/if}}
+
+            {{if canEdit }}
+            <br />Feel free to <a href="${editUrl}">edit it</a>.
+            {{/if}}
+        </div>
+    </div>
+</script><script type="text/x-jquery-tmpl" id="user-with-follow">
+    <li class="userWithFollow">
+        <a class="gravatar-link" href="${user.profileUrl}"><img class="gravatar" src="${user.avatarUrl}"></a>
+        <div class="info">
+            <a href="${user.profileUrl}" class="username">${user.displayName}</a>
+        </div>
+        {{if user.id != currentUser.id}}
+        {{if $.grep(follows, function(follow){ return follow.followed.id == user.id }).length < 1}}
+        <a class="followLink btn" command="follow" data-node-type="user" nodeId="${user.id}"></a>
+        {{else}}
+        <a class="followLink on btn" command="follow" data-node-type="user" nodeId="${user.id}" ></a>
+        {{/if}}
+        {{/if}}
+    </li>
+</script>
+
+
+
+                                </div>
+                                <div class="span4 sidebarTwo">
+        <div>
+             <h3>Welcome to Unity Answers</h3>     <p>The best place to ask and answer questions about development with Unity. </p> <p>To help users post good questions and use the site effectively we have posted a <a href="http://answers.unity3d.com/page/userguide.html">user guide. </a> </p> <p> If you are a new user, check out our <a href="http://answers.unity3d.com/page/faq.html">FAQ</a> for more information.</p>  <p>If you are a moderator, see our <a href="http://answers.unity3d.com/page/modguide.html">Moderator Guidelines</a> page.</p>  <p>We are making improvements to UA, see the <a href="http://answers.unity3d.com/page/changes.html">list of changes</a>.</p>  <p> For <a href="http://answers.unity3d.com/page/troubleshooting.html"> troubleshooting </a> common problems with Unity 5.x Editor (including Win 10). </p> 
+        </div>
+        <div>
+            
+
+<div class="widget question-follow-widget">
+    <div class="widget-header">
+        <i class="icon-arrow-right"></i>
+        <h3>Follow this Question</h3>
+    </div>
+    <div class="widget-content">
+        <p>
+            <a class="btn btn-small" title="Subscribe to Answers" href="http://answers.unity3d.com/feed/53170/answers.rss">
+                <i class="icon-rss"></i>
+
+                Answers </a>
+
+
+            <a class="btn btn-small" title="Subscribe to Comments and Answers" href="http://answers.unity3d.com/feed/53170/comments-and-answers.rss">
+                <i class="icon-rss"></i>
+Answers and Comments            </a>
+        </p>
+
+        <p>
+<strong>14</strong> People are following this question.
+        </p><div class="followers">
+
+<a href="http://answers.unity3d.com/users/23448/dannytequila.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="23448" data-hasqtip="42"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/8b04eb00f5ff6c54a8f3911b8ecefc81" id="" alt="avatar image" title="danny.tequila">
+</a><a href="http://answers.unity3d.com/users/14179/noaa-julien.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="14179" data-hasqtip="43"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/view.html" id="" alt="avatar image" title="Julien.Lynge">
+</a><a href="http://answers.unity3d.com/users/26600/darkcloud14.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="26600" data-hasqtip="44"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/4a7c031c9fff41828c08d692b1b2304a" id="" alt="avatar image" title="DarkCloud14">
+</a><a href="http://answers.unity3d.com/users/26401/ikas.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="26401" data-hasqtip="45"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/6f6bc3a55038cd37eaf134346927019a" id="" alt="avatar image" title="ikas">
+</a><a href="http://answers.unity3d.com/users/48772/dansuper.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="48772" data-hasqtip="46"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/39a4b4f4c64cdf6e1f21372fa36fa3ed" id="" alt="avatar image" title="DanSuper">
+</a><a href="http://answers.unity3d.com/users/35442/fornoreason1000-1.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="35442" data-hasqtip="47"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/6ec73c9341128f4b5ec8f4296ecacd2c" id="" alt="avatar image" title="Fornoreason1000">
+</a><a href="http://answers.unity3d.com/users/196050/lightstriker-1.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="196050" data-hasqtip="48"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/d4b9260cfbcde27d3257ab07f3be9852" id="" alt="avatar image" title="LightStriker">
+</a><a href="http://answers.unity3d.com/users/105458/dafox.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="105458" data-hasqtip="49"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/c7b4616710b680b3e55368ae318b2d96" id="" alt="avatar image" title="DaFox">
+</a><a href="http://answers.unity3d.com/users/153967/slippdouglas.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="153967" data-hasqtip="50"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/30b1612b312bcfb53ab73dc435ae7879" id="" alt="avatar image" title="slippdouglas">
+</a><a href="http://answers.unity3d.com/users/326940/madhh.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="326940" data-hasqtip="51"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/596da76728c386209ebfd7c9ffb00a46" id="" alt="avatar image" title="madhh">
+</a><a href="http://answers.unity3d.com/users/413381/altsoftlab.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="413381" data-hasqtip="52"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/9012de2896dabf25fc2c00f5ccccb6e8(1)" id="" alt="avatar image" title="AltSoftLab">
+</a><a href="http://answers.unity3d.com/users/433020/elbriso.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="433020" data-hasqtip="53"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/c7be47bedcb1fc68efcd04feb7326c8f" id="" alt="avatar image" title="elbriso">
+</a><a href="http://answers.unity3d.com/users/59981/rame16.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="59981" data-hasqtip="54"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/0ca831f82f9d0ff361179c6a6f11aac6" id="" alt="avatar image" title="rame16">
+</a><a href="http://answers.unity3d.com/users/29297/ben-bearfish.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="29297" data-hasqtip="55"> <img class="gravatar " width="24" src="./Using drawing package like System.Drawing - Unity Answers_files/view(1).html" id="" alt="avatar image" title="Ben BearFish">
+</a>        </div>
+        <p></p>
+    </div>
+
+</div>
+
+
+
+
+        </div>
+        <div>
+            
+
+
+<div class="widget">
+    <div class="widget-header">
+        <i class="icon-list-alt"></i>
+        <h3>Related Questions</h3>
+    </div>
+    <div class="widget-content">
+                <p><a href="http://answers.unity3d.com/questions/11403/drawmesh-always-drawn-before-gameobjects.html">DrawMesh always drawn before gameobjects</a>
+                1
+Answer
+                </p>
+
+                <p><a href="http://answers.unity3d.com/questions/249004/rate-an-object-is-drawn.html">Rate an object is drawn</a>
+                1
+Answer
+                </p>
+
+                <p><a href="http://answers.unity3d.com/questions/494669/debugdraw-rect.html">Debug.draw rect</a>
+                1
+Answer
+                </p>
+
+                <p><a href="http://answers.unity3d.com/questions/790636/how-can-i-draw-vectors-onto-a-texture2d.html">How can I draw vectors onto a Texture2D?</a>
+                0
+Answers
+                </p>
+
+                <p><a href="http://answers.unity3d.com/questions/38090/drawing-a-targeting-reticule.html">Drawing a targeting reticule</a>
+                1
+Answer
+                </p>
+
+    </div>
+</div>
+
+
+        </div>
+        <div>
+            
+        </div>
+
+                                </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <div class="push"></div>
+</section></div>
+
+
+<a class="dummy-navbar-link hidden"></a>
+<div class="off-canvas-nav sidr left" id="sidr" style="display:none;">
+<ul class="nav nav-list">
+    <li class="nav-header">
+Anonymous    </li>
+    <li>
+        <a href="http://answers.unity3d.com/users/login.html">Sign in</a>
+    </li>
+    <li class="nav-header">Create</li>
+    <li>
+        <a href="http://answers.unity3d.com/questions/ask.html?space=8">Ask a question</a>
+    </li>
+
+
+    <li class="nav-header">Spaces</li>
+
+
+
+            
+                        <li>
+                <a class="main-nav" href="http://answers.unity3d.com/spaces/9/index.html">Help Room</a>
+            </li><li>
+                <a class="main-nav" href="http://answers.unity3d.com/spaces/12/index.html">META</a>
+            </li><li>
+                <a class="main-nav" href="http://answers.unity3d.com/spaces/11/index.html">Moderators</a>
+
+
+
+        </li><li class="nav-header">Explore</li>
+        <li>
+            <a href="http://answers.unity3d.com/topics.html">Topics</a>
+        </li>
+
+        <li>
+            <a href="http://answers.unity3d.com/questions/index.html">Questions</a>
+        </li>
+
+        <li>
+            <a href="http://answers.unity3d.com/users/index.html">Users</a>
+        </li>
+
+        <li>
+            <a href="http://answers.unity3d.com/badge/types.html">Badges</a>
+        </li>
+</ul>
+</div><script type="text/x-jquery-tmpl" id="user-popover">
+    <div class="user-popover ahub-popover">
+        <div class="ahub-popover-content">
+            <div class="header">
+                <div class="popover-gravatar">
+                    <a href="${profileUser.profileUrl}">
+                        <img id="" class="gravatar " height="84" width="84" title="${profileUser.displayName}" alt="avatar image"  src="${pageContext.url.userAvatar.replace("%7BuserId%7D",profileUser.id)}?s=84">
+                    </a>
+                </div>
+                <p class="nameAndTagline">
+                    <a href="${profileUser.profileUrl}" class="username">${profileUser.displayName}</a><br>
+                    {{if profileUser.tagline}}<span class="tagline">${profileUser.tagline}</span>{{else}}{{if profileUser.location}}<span class="location">${profileUser.location}</span>{{/if}}{{/if}}
+                </p>
+                {{if currentUser.id != profileUser.id}}<a class="btn btn-follow {{if currentUserFollowing}}on btn-info{{/if}}" command="follow" data-node-type="user" nodeId="${profileUser.id}"></a>{{/if}}
+            </div>
+            <div class="body">
+                <div class="stats-wrapper">
+                    <ul class="stats unstyled">
+                        <li><a href="${profileUser.profileUrl}"><span class="count">${profileUser.reputation}</span><br>${i18n.reputation}</a></li>
+                        <li><a href="${profileUser.profileUrl}"><span class="count">${profileUser.postCount}</span><br>${i18n.posts}</a></li>
+                        <li><a href="${profileUser.profileUrl}"><span class="count">${profileUser.userFollowCount}</span><br>${i18n.following}</a></li>
+                        <li><a href="${profileUser.profileUrl}"><span class="count">${profileUser.followerCount}</span><br>${i18n.followers}</a></li>
+                        <li><a href="${profileUser.profileUrl}"><span class="count">${profileUser.creationDateObj.getMonth() + 1 + "/" + profileUser.creationDateObj.getFullYear().toString().substring(2,4)}</span><br>${i18n.joined}</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script><script type="text/x-jquery-tmpl" id="topic-popover">
+    <div class="topic-popover ahub-popover">
+        <div class="ahub-popover-content">
+            <div class="header">
+                <div class="popover-icon">
+                    <a href="${topic.url}">
+                        <img id="" class="gravatar " height="84" width="84" title="${topic.name}" alt="${topic.name} icon" src="${topic.icon}">
+                    </a>
+                </div>
+                <p class="name"><a href="${topic.url}">${topic.name}</a></p>
+                <a class="btn btn-follow {{if currentUserFollowing}}on btn-info{{/if}}" command="follow" data-node-type="topic" nodeId="${topic.name}"></a>
+            </div>
+            <div class="body">
+                <div class="stats-wrapper">
+                    <ul class="stats unstyled">
+                        <li><a href="${topic.url}"><span class="count">${followerCount}</span><br>${i18n.followers}</a></li>
+                        <li><a href="${topic.url}"><span class="count">${questionCount}</span><br>${i18n.questions}</a></li>
+                        <li><a href="${topic.url}"><span class="count">${answerCount}</span><br>${i18n.answers}</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                {{if description}}<div class="description">{{html description}}</div>{{/if}}
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/x-jquery-tmpl" id="badge-popover">
+    <div class="badge-popover ahub-popover">
+        <div class="ahub-popover-content">
+            <div class="header">
+                <div class="pull-left">
+                    <img class="gravatar award-icon" height="84" width="84" title="${awardType.name}" alt="avatar image" src="${awardType.awardIconSrc}">
+                </div>
+                <p class="nameAndTagline">
+                    <a href="${awardType.awardUrl}" class="name">${awardType.name}</a><br>
+                    <span class="tagline">${awardType.description}</span>
+                </p>   
+            </div>
+            <div class="body">
+                	<div class="stats-wrapper">
+	                	<ul class="stats unstyled">
+							<li><a href="${awardType.awardUrl}"><span class="count">${awardPager.totalCount}</span><br>${i18n.awarded}</a></li>
+	                		<li>
+	                			<ul class="users unstyled">
+	                				<li><span class="user-list-title">${i18n.completedBy}:</span></li>
+			                		{{each awardPager.list}}
+				                		<li>
+					                		<a href="${$value.user.profileUrl}" title="${$value.user.username}">
+					                			<img class="gravatar " width="32" height="32" src="${$value.user.avatar}?s=32">
+					                		</a>
+					                	</li>
+				                	{{/each}}
+				                	<div class="clearfix"></div>
+		                		</ul>
+	                		</li>
+	                		<div class="clearfix"></div>
+	                	</ul>
+	                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+    var searchItemMouseDown = false;
+    var $searchAuto = $("#search-query").autocomplete({
+        open: function () {
+            $searchAuto.addClass("open");
+            $("#searchResultsAutoComplete").find("a").mousedown(function (e) {
+                searchItemMouseDown = true;
+            });
+        },
+        close: function (e) {
+            $searchAuto.removeClass("open");
+        },
+        appendTo: '#searchResultsAutoComplete',
+        autoFocus: false,
+        highlight: function (match, keywords) {
+            keywords = keywords.split(' ').join('|');
+            return match.replace(new RegExp("(" + keywords + ")", "gi"), '<b>$1</b>');
+        },
+        source: function (request, response) {
+            var query = request.term;
+            var labelText = $('<div/>').text(request.term).html();
+
+            if (!/\s$/.test(query)) {
+                query += "*";
+            }
+
+            $.ajax({
+                url: '/search.json',
+                dataType: 'json',
+                minLength: 0,
+                delay: 30,
+                data: { q: query, page: 1, pageSize: 7, type: "object", compact: 'true' },
+                success: function (data) {
+                    var $results = $.map(data.searchResults.results, function (item, index) {
+                        if (item != null) {
+                            if (item.username){
+                                var name = item.username;
+                                if(item.realname){
+                                    name += " | " + item.realname;
+                                }
+                                return {
+
+                                    label: name.replace(
+                                            new RegExp(
+                                                            "(?![^&;]+;)(?!<[^<>]*)(" +
+                                                            $.ui.autocomplete.escapeRegex(request.term) +
+                                                            ")(?![^<>]*>)(?![^&;]+;)", "gi"
+                                            ), "<strong>$1</strong>"),
+                                    url: "/users/%7Bid%7D/%7Bplug%7D.html", //item.id
+                                    value: name,
+                                    id: item.id,
+                                    plug: item.plug,
+                                    type: "User",
+                                    emailHash: item.emailHash
+                                };
+                            }
+                            switch (item.type) {
+                                case 'topic':
+                                    return {
+                                        label: item.name.replace(
+                                                new RegExp(
+                                                        "(?![^&;]+;)(?!<[^<>]*)(" +
+                                                                $.ui.autocomplete.escapeRegex(request.term) +
+                                                                ")(?![^<>]*>)(?![^&;]+;)", "gi"
+                                                ), "<strong>$1</strong>"),
+                                        url: "/topics/%7Bid%7D.html", //item.id
+                                        value: item.name,
+                                        id: item.name,
+                                        plug: item.plug,
+                                        type: "Topic"
+                                    };
+                                case 'user':
+                                    var name = item.username;
+                                    if(item.realname){
+                                        name += " | " + item.realname;
+                                    }
+                                    return {
+
+                                        label: name.replace(
+                                                new RegExp(
+                                                        "(?![^&;]+;)(?!<[^<>]*)(" +
+                                                                $.ui.autocomplete.escapeRegex(request.term) +
+                                                                ")(?![^<>]*>)(?![^&;]+;)", "gi"
+                                                ), "<strong>$1</strong>"),
+                                        url: "/users/%7Bid%7D/%7Bplug%7D.html", //item.id
+                                        value: name,
+                                        id: item.id,
+                                        plug: item.plug,
+                                        type: "User",
+                                        emailHash: item.emailHash
+                                    };
+                                case 'question':
+                                    return {
+                                        label: item.title.replace(
+                                                new RegExp(
+                                                        "(?![^&;]+;)(?!<[^<>]*)(" +
+                                                                $.ui.autocomplete.escapeRegex(request.term) +
+                                                                ")(?![^<>]*>)(?![^&;]+;)", "gi"
+                                                ), "<strong>$1</strong>"),
+                                        url: "/questions/%7Bid%7D/%7Bplug%7D.html", //item.id
+                                        value: item.title,
+                                        id: item.id,
+                                        plug: item.plug,
+                                        type: item.type
+                                    };
+                                default:
+                                    return {
+                                        label: item.title.replace(
+                                                new RegExp(
+                                                        "(?![^&;]+;)(?!<[^<>]*)(" +
+                                                                $.ui.autocomplete.escapeRegex(request.term) +
+                                                                ")(?![^<>]*>)(?![^&;]+;)", "gi"
+                                                ), "<strong>$1</strong>"),
+                                        url: "/content/%7Btype%7D/%7Bid%7D/%7Bplug%7D.html", //item.id
+                                        value: item.title,
+                                        id: item.id,
+                                        plug: item.plug,
+                                        type: item.type
+                                    };
+                            }
+                        }
+                    });
+                    $results.push({
+                        label: "Search: " + "\"" + $.trim(labelText) + "\"",
+                        url: "/search.html?q={query}",
+                        query: request.term,
+                        value: request.term
+                    });
+                    $results.push({
+                        label: "Add Question: <strong>\"$q\"<\/strong>".replace("$q", $.trim(labelText)),
+                        url: "/questions/ask.html?a=true&q={query}&space=8",
+                        query: request.term,
+                        value: request.term
+                    });
+
+                    response($results);
+                }
+            });
+        },
+        select: function (event, ui) {
+            var url = ui.item.url.replace("%7Bid%7D", ui.item.id);
+            url = url.replace("%7Bplug%7D", ui.item.plug);
+            url = url.replace("{query}", ui.item.query);
+            url = url.replace("%7Btype%7D", ui.item.type);
+            window.location = url;
+            return false;
+        }
+    }).keydown(function () {
+                $(this).css('color', '#000');
+            });
+
+    if ($searchAuto.length) {
+        $searchAuto.data("uiAutocomplete")._renderItem = function (ul, item) {
+            var type_str = "";
+            if (item.type == "Topic")
+                    type_str = "<span class='autocomplete-type'>" + "Topic" + "</span>";
+            return $("<li></li>")
+                    .data("item.autocomplete", item)
+                    .append("<a>" + (item.type == 'User' ? '<img class="gravatar" align="left" width="16" height="16" style="margin-right: 5px;" src="http://www.gravatar.com/avatar/'
+                            + item.emailHash + '?s=16&amp;d=identicon&amp;r=PG"/>' : '') + " " + item.label + " " + type_str + "</a>")
+                    .appendTo(ul);
+        };
+    }
+</script><script type="text/javascript">
+
+    $(document).ready(function () {
+        $bottom = $("#bottom");
+        $notFooter = $("#not-footer");
+        $push = $(".push");
+        $push.css("height", $bottom.outerHeight() + "px");
+        $notFooter.css("margin-bottom", "-" + $bottom.outerHeight() + "px");
+
+        $(".dummy-navbar-link").sidr();
+
+        $(".off-canvas-nav-btn").on("click", function(){
+            $.sidr(
+                "open",
+                "sidr",
+                function(){
+                    $(document.body).prepend("<div class='cover'></div>");
+                    $(".cover").fadeIn().on("click", function(){
+                        console.log("click");
+
+                        $.sidr('close', 'sidr');
+                        $(this).remove();
+                    });
+                }
+            );
+        });
+    });
+
+
+    $(".answer-body pre").addClass("prettyprint").addClass("linenums");
+    $(".question-body pre").addClass("prettyprint").addClass("linenums");
+    prettyPrint();
+
+</script>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2854981-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 6px; display: none; top: 66px; position: absolute; left: 1531px;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table><table cellspacing="0" cellpadding="0" class="gstl_51 gssb_c" style="width: 2px; display: none; top: 3px; position: absolute; left: -1px;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>
